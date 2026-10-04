@@ -2,80 +2,78 @@
 
 CommerceCare 是一个从零搭建的 Java 电商客服学习项目。目标是基于 Adaptive-RAG 思路，根据问题复杂度选择检索策略，逐步加入多跳检索、业务工具、多智能体协作、证据检查、人工接管、评测和链路追踪。
 
-当前阶段已提供基础后端代码：Spring Boot 启动入口、系统信息接口和 Actuator 健康检查。完整路线见 [技术方案与项目路线](技术方案与项目路线.md)。
+当前阶段提供基础 Spring Boot 后端：系统信息接口和 Actuator 健康检查。完整路线见 [技术方案与项目路线](技术方案与项目路线.md)。
 
 ## 技术栈
 
 - Java 21、Maven 3.9+
 - Spring Boot 3.5.16
 - Spring MVC、Bean Validation、Actuator
-- Spring AI 1.1.2 和 Spring AI Alibaba 1.1.2.2 的 BOM 版本管理
-
-BOM 仅管理后续 AI 依赖版本；模型、数据库和 Graph 能力在后续阶段按路线接入。
+- Spring AI 1.1.2 与 Spring AI Alibaba 1.1.2.2 BOM 版本管理
 
 ## 项目结构
 
 ```text
-backend/
-├── pom.xml
-└── src/main/
-    ├── java/com/lzq/commercecare/
-    │   ├── CommerceCareApplication.java
-    │   └── system/
-    │       ├── SystemController.java
-    │       └── SystemInfoResponse.java
-    └── resources/
-        └── application.yml
+pom.xml                                  # Maven 根聚合工程
+.run/CommerceCare.run.xml                # IDEA 共享启动配置
+backend/pom.xml                          # Spring Boot 应用子模块
+backend/src/main/java/com/lzq/commercecare/
+├── CommerceCareApplication.java
+└── system/
+    ├── SystemController.java
+    └── SystemInfoResponse.java
+backend/src/main/resources/application.yml
 ```
 
-## 本地启动
+## 在 IntelliJ IDEA 中打开与启动
 
-在项目根目录执行：
+在 IDEA 中打开 `D:\电商客服Agent` 根目录。进入 Maven 工具窗口并重新加载项目。如果 Maven 项目列表为空，在 Project 面板右键根目录的 `pom.xml`，选择 **Add as Maven Project**，然后点 Reload All Maven Projects。
+
+在 File → Project Structure → Project 中选择 **JDK 21**。在 Settings → Build, Execution, Deployment → Maven → Importing 和 Runner 中也选择 JDK 21。
+
+重新加载后，从右上角运行配置下拉框选择共享配置 **CommerceCare**，点击绿色运行按钮。该配置执行根 Maven 聚合工程的 `spring-boot:run`，再由 Maven 进入 backend 子模块。
+
+## 在 PowerShell 中启动
+
+在项目根目录 `D:\电商客服Agent` 执行：
 
 ```powershell
-Set-Location backend
 mvn spring-boot:run
+```
+
+如果只想直接运行后端子模块，也可以执行：
+
+```powershell
+mvn -f .\backend\pom.xml spring-boot:run
 ```
 
 默认端口为 8081。
 
 ## 接口验证
 
-另开一个 PowerShell 窗口执行：
+应用启动后，在另一个 PowerShell 窗口执行：
 
 ```powershell
-Invoke-RestMethod 'http://localhost:8081/actuator/health' |
-    ConvertTo-Json
-
-Invoke-RestMethod 'http://localhost:8081/api/v1/system/info' |
-    ConvertTo-Json
+Invoke-RestMethod "http://localhost:8081/actuator/health" | ConvertTo-Json
+Invoke-RestMethod "http://localhost:8081/api/v1/system/info" | ConvertTo-Json
 ```
 
-健康检查返回 `{"status":"UP"}`。系统信息接口返回应用名称与实际运行的 Java 版本：
+健康检查返回 `{"status":"UP"}`。系统信息接口返回应用名称和 Java 运行版本。
 
-```json
-{
-  "application": "commercecare",
-  "javaVersion": "以实际 Java 21 运行环境为准"
-}
-```
+## 构建
 
-## 构建与运行 JAR
+在项目根目录执行：
 
 ```powershell
-Set-Location backend
 mvn verify
-java -jar target/commercecare-0.0.1-SNAPSHOT.jar
 ```
+
+生成的可运行 JAR 位于 `backend/target/commercecare-0.0.1-SNAPSHOT.jar`。
+
+## 验证记录
+
+2026-10-04 已从根目录执行 `mvn -B -ntp verify`，反应堆中的 backend 和根聚合工程均构建成功。随后从根目录启动 `mvn -B -ntp spring-boot:run`，真实 JAR 返回健康状态 `UP`，系统信息返回 `commercecare` 和 Java 21。当前还没有自动化测试。
 
 ## 本地文件管理
 
-仓库根目录的 .gitignore 忽略 IDE 配置、Maven 构建产物、日志、本地环境配置、证书私钥、运行时数据和本地模型权重。知识资料、评测数据以及 .env.example 配置样例可以提交。
-
-密钥等本机设置使用环境变量或已忽略的 application-local.yml；Git 中只保留不含真实凭据的配置样例。
-
-## 本阶段验证
-
-2026-10-04 已执行 Maven verify，完成 Java 21 编译和可运行 JAR 打包；随后实际启动 JAR，验证 /actuator/health 返回 UP，/api/v1/system/info 返回 commercecare 与 Java 21 运行版本。接口验证使用临时端口，日常默认端口仍为 8081。
-
-本阶段验证覆盖基础启动和 HTTP 接口。项目当前尚未添加自动化测试；AI BOM 已能解析，模型、检索与 Graph 的运行验证将在对应阶段进行。
+根目录 `.gitignore` 忽略 IDEA 本机配置、Maven 构建产物、日志、本地环境配置、证书私钥、运行时数据和本地模型权重。知识资料、评测数据和 `.env.example` 样例可以提交。
