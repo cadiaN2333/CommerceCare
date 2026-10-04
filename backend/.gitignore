@@ -1,0 +1,12 @@
+# Maven 构建产物
+**/target/
+**/out/
+*.class
+
+# IntelliJ 本机配置
+.idea/
+*.iml
+
+# 本地密钥和配置
+.env
+application-local.yaml

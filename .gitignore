@@ -1,0 +1,46 @@
+# Maven 与编译产物
+**/target/
+**/out/
+*.class
+
+# IDE 本机配置
+.idea/
+.vscode/
+*.iml
+*.ipr
+*.iws
+
+# 本地环境与敏感配置
+.env
+.env.*
+!.env.example
+!.env.*.example
+application-local.yml
+application-local.yaml
+application-local.properties
+application-secrets.yml
+application-secrets.yaml
+application-secrets.properties
+*.key
+*.pem
+*.p12
+*.pfx
+*.jks
+
+# 日志和运行时数据
+*.log
+**/logs/
+/.runtime/
+/deploy/data/
+/data/lucene/
+
+# 本地模型权重
+*.onnx
+*.safetensors
+*.pt
+*.pth
+
+# 操作系统文件
+.DS_Store
+Thumbs.db
+Desktop.ini
