@@ -1,0 +1,11 @@
+case_id,question,intent,complexity,expected_strategy,expected_source_ids,expected_tools,test_user_id,test_fixture_id,reference_date,answerable,expected_answer_points
+FAQ-001,"SoundBee-A1没拆封而且配件齐全，签收第3天可以退吗？",POLICY,SINGLE,BASIC_RAG,return-and-warranty.md,,demo-customer-001,,2026-10-04,true,"满足签收后7天内且未拆封、配件齐全的演示条件"
+FAQ-002,"SoundBee-A1收货5天，产品封条完好、配件齐全，只剪开了快递袋，可以无理由退吗？",POLICY,SINGLE,HYBRID_SINGLE_HOP,return-and-warranty.md,,demo-customer-001,,2026-10-04,true,"回答应区分快递袋和商品是否拆封，并引用7天规则"
+FAQ-003,"查订单ORD-QUALITY-028D：SoundBee-A1已确认单侧无声是质量问题，能换货吗？",ORDER_AND_POLICY,MULTI,MULTI_HOP,return-and-warranty.md,order.lookup,demo-customer-001,ORD-QUALITY-028D,2026-10-04,true,"查询签收时间为28天的订单；30天内确认质量问题可申请换货"
+FAQ-004,"订单ORD-QUALITY-031D的耳机签收31天，已确认质量问题，现在怎么处理？",ORDER_AND_POLICY,MULTI,MULTI_HOP,return-and-warranty.md,order.lookup,demo-customer-001,ORD-QUALITY-031D,2026-10-04,true,"超过30天且仍在365天保修期内，按演示规则走维修流程"
+FAQ-005,"订单ORD-WARRANTY-300D的SoundBee-A1签收300天，确认是质量问题，还在保修期吗？",ORDER_AND_POLICY,MULTI,MULTI_HOP,return-and-warranty.md,order.lookup,demo-customer-001,ORD-WARRANTY-300D,2026-10-04,true,"300天未超过365天保修期限，按演示规则走维修流程"
+FAQ-006,"订单ORD-DELIVERY-001显示已签收，但我没有收到包裹，怎么办？",LOGISTICS,SINGLE,BUSINESS_TOOL,return-and-warranty.md,logistics.lookup|human.handoff,demo-customer-001,ORD-DELIVERY-001,2026-10-04,true,"查询物流状态；若仍确认用户未收到，按规则指导联系人工客服"
+FAQ-007,"我的订单ORD-UNOPENED-007D现在是什么物流状态？",ORDER_STATUS,SINGLE,BUSINESS_TOOL,,order.lookup,demo-customer-001,ORD-UNOPENED-007D,2026-10-04,true,"根据订单工具返回当前物流状态，不使用模型记忆猜测"
+FAQ-008,"我的耳机坏了，能不能换一个？",ORDER_AND_POLICY,MULTI,CLARIFY,,,demo-customer-001,,2026-10-04,false,"先澄清订单/商品和故障信息；不能在事实不足时承诺换货"
+FAQ-009,"SoundBee-A1可以连接哪些型号的电视？",PRODUCT_COMPATIBILITY,SINGLE,ABSTAIN,,,demo-customer-001,,2026-10-04,false,"知识资料没有兼容型号信息，应说明缺少依据"
+FAQ-010,"查订单ORD-UNOPENED-007D：签收正好7天，商品未拆封且配件齐全，可以退吗？",ORDER_AND_POLICY,MULTI,MULTI_HOP,return-and-warranty.md,order.lookup,demo-customer-001,ORD-UNOPENED-007D,2026-10-04,true,"验证7天边界；订单日期与售后政策一致后回答"

@@ -1,0 +1,66 @@
+{
+  "referenceDate": "2026-10-04",
+  "note": "全部为虚构的本地评测订单，不对应真实客户或真实交易。",
+  "orders": [
+    {
+      "fixtureId": "ORD-UNOPENED-007D",
+      "orderId": "ORD-UNOPENED-007D",
+      "userId": "demo-customer-001",
+      "sku": "SoundBee-A1",
+      "receivedAt": "2026-09-27",
+      "itemUnopened": true,
+      "accessoriesComplete": true,
+      "qualityIssueConfirmed": false,
+      "logisticsStatus": "DELIVERED",
+      "recipientConfirmed": true
+    },
+    {
+      "fixtureId": "ORD-QUALITY-028D",
+      "orderId": "ORD-QUALITY-028D",
+      "userId": "demo-customer-001",
+      "sku": "SoundBee-A1",
+      "receivedAt": "2026-09-06",
+      "itemUnopened": false,
+      "accessoriesComplete": true,
+      "qualityIssueConfirmed": true,
+      "logisticsStatus": "DELIVERED",
+      "recipientConfirmed": true
+    },
+    {
+      "fixtureId": "ORD-QUALITY-031D",
+      "orderId": "ORD-QUALITY-031D",
+      "userId": "demo-customer-001",
+      "sku": "SoundBee-A1",
+      "receivedAt": "2026-09-03",
+      "itemUnopened": false,
+      "accessoriesComplete": true,
+      "qualityIssueConfirmed": true,
+      "logisticsStatus": "DELIVERED",
+      "recipientConfirmed": true
+    },
+    {
+      "fixtureId": "ORD-WARRANTY-300D",
+      "orderId": "ORD-WARRANTY-300D",
+      "userId": "demo-customer-001",
+      "sku": "SoundBee-A1",
+      "receivedAt": "2025-12-08",
+      "itemUnopened": false,
+      "accessoriesComplete": true,
+      "qualityIssueConfirmed": true,
+      "logisticsStatus": "DELIVERED",
+      "recipientConfirmed": true
+    },
+    {
+      "fixtureId": "ORD-DELIVERY-001",
+      "orderId": "ORD-DELIVERY-001",
+      "userId": "demo-customer-001",
+      "sku": "SoundBee-A1",
+      "receivedAt": "2026-09-20",
+      "itemUnopened": false,
+      "accessoriesComplete": true,
+      "qualityIssueConfirmed": false,
+      "logisticsStatus": "SIGNED",
+      "recipientConfirmed": false
+    }
+  ]
+}
