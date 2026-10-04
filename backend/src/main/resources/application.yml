@@ -2,8 +2,19 @@ server:
   port: 8081
 
 spring:
+  config:
+    import:
+      - optional:file:../.env[.properties]
+      - optional:file:.env[.properties]
   application:
     name: commercecare
+  datasource:
+    url: jdbc:postgresql://localhost:${COMMERCECARE_DB_PORT:5433}/${COMMERCECARE_DB_NAME:commercecare}
+    username: ${COMMERCECARE_DB_USER:commercecare}
+    password: ${COMMERCECARE_DB_PASSWORD:}
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
 
 management:
   endpoints:

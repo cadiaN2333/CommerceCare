@@ -1,0 +1,22 @@
+services:
+  postgres:
+    image: pgvector/pgvector:0.8.6-pg16
+    container_name: commercecare-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${COMMERCECARE_DB_NAME:-commercecare}
+      POSTGRES_USER: ${COMMERCECARE_DB_USER:-commercecare}
+      POSTGRES_PASSWORD: ${COMMERCECARE_DB_PASSWORD:?请在项目根目录 .env 中设置 COMMERCECARE_DB_PASSWORD}
+    ports:
+      - "${COMMERCECARE_DB_PORT:-5433}:5432"
+    volumes:
+      - commercecare-postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${COMMERCECARE_DB_USER:-commercecare} -d ${COMMERCECARE_DB_NAME:-commercecare}"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+      start_period: 5s
+
+volumes:
+  commercecare-postgres-data:
