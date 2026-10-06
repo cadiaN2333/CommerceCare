@@ -1,0 +1,16 @@
+{
+  "datasetVersion": "multi-source-retrieval-v1",
+  "createdDate": "2026-10-06",
+  "description": "多来源检索开发问题集；依据命中来源检查 TopK 召回，不把模型回答状态当作检索指标。",
+  "topK": 2,
+  "cases": [
+    {"caseId":"MR-001","group":"售后政策","question":"SoundBee-A1签收31天，仍在保修期内，确认质量问题后怎么办？","expectedSourceIds":["soundbee-return-policy-v1"]},
+    {"caseId":"MR-002","group":"设备配对","question":"第一次使用SoundBee-A1，怎样让手机搜到并连接耳机？","expectedSourceIds":["soundbee-a1-pairing-guide-v1"]},
+    {"caseId":"MR-003","group":"设备配对长尾","question":"手机蓝牙列表里找不到A1，我应该怎么重新进入配对状态？","expectedSourceIds":["soundbee-a1-pairing-guide-v1"]},
+    {"caseId":"MR-004","group":"设备故障排查","question":"耳机已经连上但听不到音乐，应该先检查什么？","expectedSourceIds":["soundbee-a1-pairing-guide-v1"]},
+    {"caseId":"MR-005","group":"物流排查","question":"SoundBee-A1订单已经显示揽收，但运单轨迹超过24小时没有更新，该找谁核实？","expectedSourceIds":["delivery-troubleshooting-v1"]},
+    {"caseId":"MR-006","group":"物流多来源","question":"订单显示签收但我没收到SoundBee-A1，应该先查看哪些记录并联系谁？","expectedSourceIds":["delivery-troubleshooting-v1","soundbee-return-policy-v1"]},
+    {"caseId":"MR-007","group":"发票流程","question":"SoundBee-A1订单的电子发票申请后去哪里下载，演示处理要多久？","expectedSourceIds":["soundbee-a1-invoice-guide-v1"]},
+    {"caseId":"MR-008","group":"多来源组合","question":"SoundBee-A1签收31天仍在保修期内且确认质量问题，应按什么流程处理；如果耳机无法配对，资料建议先做什么排查？","expectedSourceIds":["soundbee-return-policy-v1","soundbee-a1-pairing-guide-v1"]}
+  ]
+}

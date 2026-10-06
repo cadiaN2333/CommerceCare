@@ -44,3 +44,6 @@ application-secrets.properties
 .DS_Store
 Thumbs.db
 Desktop.ini
+
+# 评测运行生成文件，汇总报告保存在 datasets/evaluation
+/artifacts/evaluation/

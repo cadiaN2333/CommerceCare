@@ -1,0 +1,20 @@
+{
+  "datasetVersion": "basic-rag-v1",
+  "createdDate": "2026-10-06",
+  "description": "基础RAG开发问题集，全部基于虚构售后规则，仅评估静态知识问答，不要求查询真实订单。",
+  "knowledgeSource": "datasets/knowledge/return-and-warranty.md",
+  "cases": [
+    {"caseId":"BR-001","group":"普通FAQ","question":"SoundBee-A1签收3天，商品未拆封且配件齐全，可以申请无理由退货吗？","expectedStatus":"ANSWERED","expectedSourceId":"soundbee-return-policy-v1","expectedAnswerPoints":"满足7天内、未拆封、配件齐全的演示条件，可以申请无理由退货。"},
+    {"caseId":"BR-002","group":"普通FAQ","question":"SoundBee-A1签收5天，商品已经拆封，可以申请无理由退货吗？","expectedStatus":"ANSWERED","expectedSourceId":"soundbee-return-policy-v1","expectedAnswerPoints":"已拆封不满足本演示规则的无理由退货条件；不要推断所有其他售后申请都不可行。"},
+    {"caseId":"BR-003","group":"普通FAQ","question":"SoundBee-A1签收20天，已确认存在质量问题，可以申请换货吗？","expectedStatus":"ANSWERED","expectedSourceId":"soundbee-return-policy-v1","expectedAnswerPoints":"30天内确认质量问题可以申请换货；不声称已实际查询或批准订单。"},
+    {"caseId":"BR-004","group":"条件边界","question":"SoundBee-A1签收恰好30天，已经确认质量问题，按演示规则应怎样处理？","expectedStatus":"ANSWERED","expectedSourceId":"soundbee-return-policy-v1","expectedAnswerPoints":"属于30天内确认质量问题，可以申请换货。"},
+    {"caseId":"BR-005","group":"条件边界","question":"SoundBee-A1签收31天，仍在365天保修期内，确认质量问题后怎么处理？","expectedStatus":"ANSWERED","expectedSourceId":"soundbee-return-policy-v1","expectedAnswerPoints":"超过30天、仍在365天保修期内，确认质量问题后按维修流程处理。"},
+    {"caseId":"BR-006","group":"普通FAQ","question":"SoundBee-A1签收300天，仍在保修期内，已经确认质量问题，可以如何处理？","expectedStatus":"ANSWERED","expectedSourceId":"soundbee-return-policy-v1","expectedAnswerPoints":"按维修流程处理；不能编造免费维修或具体收费承诺。"},
+    {"caseId":"BR-007","group":"普通FAQ","question":"SoundBee-A1物流显示签收，但是我没有收到商品，按资料应该怎么办？","expectedStatus":"ANSWERED","expectedSourceId":"soundbee-return-policy-v1","expectedAnswerPoints":"先查询物流记录并联系人工客服；不声称已查询物流、已赔付或已创建工单。"},
+    {"caseId":"BR-008","group":"长尾表达","question":"我的SoundBee-A1到手一个多月了，具体签收31天，还在一年保修期里，已经确认有质量问题，这种情况该咋办？","expectedStatus":"ANSWERED","expectedSourceId":"soundbee-return-policy-v1","expectedAnswerPoints":"识别31天与保修期内的条件，按维修流程处理。"},
+    {"caseId":"BR-009","group":"无答案","question":"SoundBee-A1支持哪些蓝牙编码格式？","expectedStatus":"INSUFFICIENT_EVIDENCE","expectedSourceId":null,"expectedAnswerPoints":"资料没有蓝牙编码信息，应拒绝编造参数，来源列表为空。"},
+    {"caseId":"BR-010","group":"无答案","question":"SoundBee-A1超过365天保修期后，维修收费多少钱？","expectedStatus":"INSUFFICIENT_EVIDENCE","expectedSourceId":null,"expectedAnswerPoints":"资料没有过保维修价格，应拒绝编造金额，来源列表为空。"},
+    {"caseId":"BR-011","group":"无答案","question":"SoundBee-A1申请无理由退货时，退货运费由谁承担？","expectedStatus":"INSUFFICIENT_EVIDENCE","expectedSourceId":null,"expectedAnswerPoints":"资料没有运费承担规则，应说明无法确认，来源列表为空。"},
+    {"caseId":"BR-012","group":"无答案","question":"SoundBee-A1完成换货后，保修期会重新计算365天吗？","expectedStatus":"INSUFFICIENT_EVIDENCE","expectedSourceId":null,"expectedAnswerPoints":"资料没有换货后保修期重新计算规则，应说明无法确认，来源列表为空。"}
+  ]
+}
