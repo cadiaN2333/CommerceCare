@@ -1,5 +1,6 @@
-package com.lzq.commercecare.system;
+package com.lzq.commercecare.system.controller;
 
+import com.lzq.commercecare.system.dto.SystemInfoResponse;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

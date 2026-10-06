@@ -1,4 +1,4 @@
-package com.lzq.commercecare.system;
+package com.lzq.commercecare.system.dto;
 
 public record SystemInfoResponse(
         String application,

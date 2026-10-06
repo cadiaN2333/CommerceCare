@@ -15,7 +15,25 @@ spring:
   flyway:
     enabled: true
     locations: classpath:db/migration
-
+  ai:
+    model:
+      chat: deepseek
+      embedding: dashscope
+    deepseek:
+      api-key: ${DEEPSEEK_API_KEY}
+      chat:
+        options:
+          model: deepseek-flash
+    dashscope:
+      api-key: ${DASHSCOPE_API_KEY}
+      embedding:
+        options:
+          model: text-embedding-v4
+          dimensions: 1024
+    vectorstore:
+      pgvector:
+        initialize-schema: true
+        dimensions: 1024
 management:
   endpoints:
     web:
