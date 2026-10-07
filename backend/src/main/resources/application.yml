@@ -39,3 +39,6 @@ management:
     web:
       exposure:
         include: health
+commercecare:
+  search:
+    lucene-path: ./data/lucene

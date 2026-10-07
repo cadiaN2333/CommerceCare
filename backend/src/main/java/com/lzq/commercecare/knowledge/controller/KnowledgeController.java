@@ -8,6 +8,7 @@ import com.lzq.commercecare.knowledge.dto.KnowledgeSearchRequest;
 import com.lzq.commercecare.knowledge.dto.KnowledgeSearchResponse;
 import com.lzq.commercecare.knowledge.service.KnowledgeIngestionService;
 import com.lzq.commercecare.knowledge.service.KnowledgeSearchService;
+import com.lzq.commercecare.knowledge.service.LuceneKeywordSearchService;
 import jakarta.validation.Valid;
 import org.springframework.ai.document.Document;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,13 +22,16 @@ public class KnowledgeController {
 
     private final KnowledgeIngestionService ingestionService;
     private final KnowledgeSearchService searchService;
+    private final LuceneKeywordSearchService luceneKeywordSearchService;
 
     public KnowledgeController(
             KnowledgeIngestionService ingestionService,
-            KnowledgeSearchService searchService
+            KnowledgeSearchService searchService,
+            LuceneKeywordSearchService luceneKeywordSearchService
     ) {
         this.ingestionService = ingestionService;
         this.searchService = searchService;
+        this.luceneKeywordSearchService = luceneKeywordSearchService;
     }
 
     @PostMapping("/index")
@@ -52,6 +56,20 @@ public class KnowledgeController {
     ) {
         List<KnowledgeSearchResponse.Result> results =
                 searchService.search(request.question(), request.topK())
+                        .stream()
+                        .map(this::toSearchResult)
+                        .toList();
+
+        return new KnowledgeSearchResponse(request.question(), results);
+    }
+
+    @PostMapping("/keyword-search")
+    public KnowledgeSearchResponse keywordSearch(
+            @Valid @RequestBody KnowledgeSearchRequest request
+    ) {
+        List<KnowledgeSearchResponse.Result> results =
+                luceneKeywordSearchService
+                        .search(request.question(), request.topK())
                         .stream()
                         .map(this::toSearchResult)
                         .toList();

@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 public class KnowledgeIngestionService {
 
     private final VectorStore vectorStore;
+    private final LuceneKeywordSearchService keywordSearchService;
 
     private final TokenTextSplitter textSplitter = TokenTextSplitter.builder()
             .withChunkSize(400)
@@ -24,8 +25,12 @@ public class KnowledgeIngestionService {
             .withKeepSeparator(true)
             .build();
 
-    public KnowledgeIngestionService(VectorStore vectorStore) {
+    public KnowledgeIngestionService(
+            VectorStore vectorStore,
+            LuceneKeywordSearchService keywordSearchService
+    ) {
         this.vectorStore = vectorStore;
+        this.keywordSearchService = keywordSearchService;
     }
 
     public int index(String sourceId, String title, String content) {
@@ -62,6 +67,7 @@ public class KnowledgeIngestionService {
 
         if (!documentsToStore.isEmpty()) {
             vectorStore.add(documentsToStore);
+            keywordSearchService.upsert(documentsToStore);
         }
 
         return documentsToStore.size();
