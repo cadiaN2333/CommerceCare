@@ -13,6 +13,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+/**
+ * 基础有证据回答服务；两参数入口保留原基线，三参数入口增加型号约束。
+ * 检索和生成失败不转换成正常的证据不足结果。
+ */
 @Service
 public class RagChatService {
 
@@ -49,8 +53,30 @@ public class RagChatService {
     }
 
     public ChatResponse chat(String question, int topK) {
-        List<Document> documents =
-                knowledgeSearchService.search(question, topK);
+        return chat(question, topK, null);
+    }
+
+    /**
+     * productModel为null时保持原基线；新路由只允许明确的规范型号。
+     */
+    public ChatResponse chat(String question, int topK, String productModel) {
+        if (productModel != null && productModel.isBlank()) {
+            throw new IllegalArgumentException("型号不能是空字符串。");
+        }
+        List<Document> documents = productModel == null
+                ? knowledgeSearchService.search(question, topK)
+                : knowledgeSearchService.search(question, topK, productModel);
+
+        if (productModel != null) {
+            // 在拼接上下文前检查所有候选，不仅检查最终被引用的资料。
+            for (Document document : documents) {
+                if (!productModel.equals(document.getMetadata().get("productModel"))) {
+                    throw new ResponseStatusException(
+                            HttpStatus.BAD_GATEWAY,
+                            "检索候选的适用型号与目标型号不一致，请检查索引和过滤配置。");
+                }
+            }
+        }
 
         if (documents.isEmpty()) {
             return insufficientEvidence();

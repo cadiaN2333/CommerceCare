@@ -8,6 +8,8 @@ CommerceCare 是一个从零搭建的 Java 电商客服学习项目。目标是�
 
 型号识别一键入口：执行 `.\scripts\evaluate-model-recognition.ps1`，测试独立预览接口的43条回归用例和5条参数校验。范围与实测见[型号识别验证报告](datasets/evaluation/model-recognition-v1/验证报告.md)。代码更新后先重启后端，默认端口8081。
 
+型号专属聊天入口：`POST /api/v1/chat/routed`。执行 `.\scripts\evaluate-routed-chat.ps1` 对照新入口与原chat。新入口在缺失/未知/多型号时澄清；通用意图与比较能力尚未接入，不适合替代全部客服请求。构建范围与实测见[聊天路由验证报告](datasets/evaluation/routed-chat-v1/验证报告.md)。
+
 ## 技术栈
 
 - Java 21、Maven 3.9+、Spring Boot 3.5.16
