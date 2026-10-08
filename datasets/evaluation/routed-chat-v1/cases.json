@@ -1,0 +1,262 @@
+{
+  "schemaVersion": 1,
+  "datasetVersion": "routed-chat-v1",
+  "description": "型号专属入口的合成开发用例；自动字段检查与人工答案审核分开，不是泛化测试集。",
+  "cases": [
+    {
+      "caseId": "RC-001",
+      "question": "SoundBee-A2签收恰好7天，未拆封且配件齐全，按演示规则可以申请无理由退货吗？",
+      "topK": 2,
+      "expectedStatus": "ANSWERED",
+      "expectedStrategy": "MODEL_FILTERED_VECTOR",
+      "expectedRecognitionStatus": "RESOLVED",
+      "expectedProductModel": "SoundBee-A2",
+      "expectedDetectedModels": [
+        "SoundBee-A2"
+      ],
+      "expectedUnknownMentions": [],
+      "expectedSourceIds": [
+        "expanded-v1-soundbee-a2-return"
+      ],
+      "expectedAnswerPoints": "说明包含7天边界且按假设条件可申请；不能声称已核验订单或已批准。"
+    },
+    {
+      "caseId": "RC-002",
+      "question": "soundbee-a2-plus首次配对需要长按配对键多久？",
+      "topK": 2,
+      "expectedStatus": "ANSWERED",
+      "expectedStrategy": "MODEL_FILTERED_VECTOR",
+      "expectedRecognitionStatus": "RESOLVED",
+      "expectedProductModel": "SoundBee-A2-Plus",
+      "expectedDetectedModels": [
+        "SoundBee-A2-Plus"
+      ],
+      "expectedUnknownMentions": [],
+      "expectedSourceIds": [
+        "expanded-v1-soundbee-a2-plus-pairing"
+      ],
+      "expectedAnswerPoints": "Plus演示规则为5秒；不能套用A2的3秒。"
+    },
+    {
+      "caseId": "RC-003",
+      "question": "SoundBee-A2签收16天且仍在180天保修期内，确认质量问题后怎么处理？",
+      "topK": 2,
+      "expectedStatus": "ANSWERED",
+      "expectedStrategy": "MODEL_FILTERED_VECTOR",
+      "expectedRecognitionStatus": "RESOLVED",
+      "expectedProductModel": "SoundBee-A2",
+      "expectedDetectedModels": [
+        "SoundBee-A2"
+      ],
+      "expectedUnknownMentions": [],
+      "expectedSourceIds": [
+        "expanded-v1-soundbee-a2-quality"
+      ],
+      "expectedAnswerPoints": "按维修流程处理，需核对条件；不能承诺免费维修或已审核订单。"
+    },
+    {
+      "caseId": "RC-004",
+      "question": "SoundBee-A2签收16天、仍在180天保修期，确认质量问题后怎样处理？首次蓝牙配对还需要按键多久？",
+      "topK": 2,
+      "expectedStatus": "ANSWERED",
+      "expectedStrategy": "MODEL_FILTERED_VECTOR",
+      "expectedRecognitionStatus": "RESOLVED",
+      "expectedProductModel": "SoundBee-A2",
+      "expectedDetectedModels": [
+        "SoundBee-A2"
+      ],
+      "expectedUnknownMentions": [],
+      "expectedSourceIds": [
+        "expanded-v1-soundbee-a2-quality",
+        "expanded-v1-soundbee-a2-pairing"
+      ],
+      "expectedAnswerPoints": "分别回答维修流程与首次配对按键3秒；每项结论应有相应来源，不能只回答一半。"
+    },
+    {
+      "caseId": "RC-005",
+      "question": "SoundBee-A1签收7天，未拆封配件齐全，按演示规则可以申请无理由退货吗？",
+      "topK": 2,
+      "expectedStatus": "ANSWERED",
+      "expectedStrategy": "MODEL_FILTERED_VECTOR",
+      "expectedRecognitionStatus": "RESOLVED",
+      "expectedProductModel": "SoundBee-A1",
+      "expectedDetectedModels": [
+        "SoundBee-A1"
+      ],
+      "expectedUnknownMentions": [],
+      "expectedSourceIds": [
+        "soundbee-return-policy-v1"
+      ],
+      "expectedAnswerPoints": "按演示假设条件可申请；不能认为订单已经核验。"
+    },
+    {
+      "caseId": "RC-006",
+      "question": "SoundBee-A2支持哪些蓝牙编码格式？",
+      "topK": 2,
+      "expectedStatus": "INSUFFICIENT_EVIDENCE",
+      "expectedStrategy": "MODEL_FILTERED_VECTOR",
+      "expectedRecognitionStatus": "RESOLVED",
+      "expectedProductModel": "SoundBee-A2",
+      "expectedDetectedModels": [
+        "SoundBee-A2"
+      ],
+      "expectedUnknownMentions": [],
+      "expectedSourceIds": [],
+      "expectedAnswerPoints": "资料没有编码格式，证据不足，不猜测AAC/SBC等参数，sources为空。"
+    },
+    {
+      "caseId": "RC-007",
+      "question": "SoundBee-A2超过180天保修期后，维修收多少钱？",
+      "topK": 2,
+      "expectedStatus": "INSUFFICIENT_EVIDENCE",
+      "expectedStrategy": "MODEL_FILTERED_VECTOR",
+      "expectedRecognitionStatus": "RESOLVED",
+      "expectedProductModel": "SoundBee-A2",
+      "expectedDetectedModels": [
+        "SoundBee-A2"
+      ],
+      "expectedUnknownMentions": [],
+      "expectedSourceIds": [],
+      "expectedAnswerPoints": "资料没有过保收费，不猜测价格，sources为空。"
+    },
+    {
+      "caseId": "RC-008",
+      "question": "耳机坏了能退吗？",
+      "topK": 2,
+      "expectedStatus": "NEEDS_CLARIFICATION",
+      "expectedStrategy": "CLARIFY_MODEL",
+      "expectedRecognitionStatus": "MISSING",
+      "expectedProductModel": null,
+      "expectedDetectedModels": [],
+      "expectedUnknownMentions": [],
+      "expectedSourceIds": [],
+      "expectedAnswerPoints": "提示完整型号与原问题一起发送，不生成政策答案。"
+    },
+    {
+      "caseId": "RC-009",
+      "question": "A2怎么配对？",
+      "topK": 2,
+      "expectedStatus": "NEEDS_CLARIFICATION",
+      "expectedStrategy": "CLARIFY_MODEL",
+      "expectedRecognitionStatus": "MISSING",
+      "expectedProductModel": null,
+      "expectedDetectedModels": [],
+      "expectedUnknownMentions": [],
+      "expectedSourceIds": [],
+      "expectedAnswerPoints": "首版不支持裸缩写，不能猜成SoundBee-A2。"
+    },
+    {
+      "caseId": "RC-010",
+      "question": "SoundBee-Z9能换货吗？",
+      "topK": 2,
+      "expectedStatus": "NEEDS_CLARIFICATION",
+      "expectedStrategy": "CLARIFY_MODEL",
+      "expectedRecognitionStatus": "UNKNOWN",
+      "expectedProductModel": null,
+      "expectedDetectedModels": [],
+      "expectedUnknownMentions": [
+        "SoundBee-Z9"
+      ],
+      "expectedSourceIds": [],
+      "expectedAnswerPoints": "提示核对当前目录未知的型号，不能检索其他型号。"
+    },
+    {
+      "caseId": "RC-011",
+      "question": "SoundBee-A2Plus怎么配对？",
+      "topK": 2,
+      "expectedStatus": "NEEDS_CLARIFICATION",
+      "expectedStrategy": "CLARIFY_MODEL",
+      "expectedRecognitionStatus": "UNKNOWN",
+      "expectedProductModel": null,
+      "expectedDetectedModels": [],
+      "expectedUnknownMentions": [
+        "SoundBee-A2Plus"
+      ],
+      "expectedSourceIds": [],
+      "expectedAnswerPoints": "未登记的完整写法不能截断成基础A2。"
+    },
+    {
+      "caseId": "RC-012",
+      "question": "SoundBee-A2和SoundBee-A2-Plus保修有什么区别？",
+      "topK": 2,
+      "expectedStatus": "NEEDS_CLARIFICATION",
+      "expectedStrategy": "CLARIFY_MODEL",
+      "expectedRecognitionStatus": "MULTIPLE",
+      "expectedProductModel": null,
+      "expectedDetectedModels": [
+        "SoundBee-A2",
+        "SoundBee-A2-Plus"
+      ],
+      "expectedUnknownMentions": [],
+      "expectedSourceIds": [],
+      "expectedAnswerPoints": "保留两型号，说明当前入口不支持比较，不默认选第一个。"
+    },
+    {
+      "caseId": "RC-013",
+      "question": "SoundBee-A2和SoundBee-Z9比较一下",
+      "topK": 2,
+      "expectedStatus": "NEEDS_CLARIFICATION",
+      "expectedStrategy": "CLARIFY_MODEL",
+      "expectedRecognitionStatus": "UNKNOWN",
+      "expectedProductModel": null,
+      "expectedDetectedModels": [
+        "SoundBee-A2"
+      ],
+      "expectedUnknownMentions": [
+        "SoundBee-Z9"
+      ],
+      "expectedSourceIds": [],
+      "expectedAnswerPoints": "未知优先，已知与未知都保留，不用已知项代替完整请求。"
+    },
+    {
+      "caseId": "RC-014",
+      "question": "不是SoundBee-A2，是SoundBee-A3，能换货吗？",
+      "topK": 2,
+      "expectedStatus": "NEEDS_CLARIFICATION",
+      "expectedStrategy": "CLARIFY_MODEL",
+      "expectedRecognitionStatus": "MULTIPLE",
+      "expectedProductModel": null,
+      "expectedDetectedModels": [
+        "SoundBee-A2",
+        "SoundBee-A3"
+      ],
+      "expectedUnknownMentions": [],
+      "expectedSourceIds": [],
+      "expectedAnswerPoints": "当前不解析语义纠正，保守保留两型号并说明范围。"
+    },
+    {
+      "caseId": "RC-015",
+      "question": "SoundBee-A2演示电子发票申请后需要几个工作日，在哪里下载？",
+      "topK": 2,
+      "expectedStatus": "ANSWERED",
+      "expectedStrategy": "MODEL_FILTERED_VECTOR",
+      "expectedRecognitionStatus": "RESOLVED",
+      "expectedProductModel": "SoundBee-A2",
+      "expectedDetectedModels": [
+        "SoundBee-A2"
+      ],
+      "expectedUnknownMentions": [],
+      "expectedSourceIds": [
+        "expanded-v1-soundbee-a2-invoice"
+      ],
+      "expectedAnswerPoints": "演示1个工作日，订单详情发票记录下载。"
+    },
+    {
+      "caseId": "RC-016",
+      "question": "SoundBee-A2签收恰好15天，确认质量问题后可以换货吗？",
+      "topK": 2,
+      "expectedStatus": "ANSWERED",
+      "expectedStrategy": "MODEL_FILTERED_VECTOR",
+      "expectedRecognitionStatus": "RESOLVED",
+      "expectedProductModel": "SoundBee-A2",
+      "expectedDetectedModels": [
+        "SoundBee-A2"
+      ],
+      "expectedUnknownMentions": [],
+      "expectedSourceIds": [
+        "expanded-v1-soundbee-a2-quality"
+      ],
+      "expectedAnswerPoints": "包含第15天边界可申请换货，仍需核对签收日期等条件。"
+    }
+  ]
+}
