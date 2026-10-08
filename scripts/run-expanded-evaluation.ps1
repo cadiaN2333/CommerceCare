@@ -5,6 +5,7 @@
     [ValidateRange(1, 10)]
     [int]$TopK = 2,
     [switch]$SkipImport,
+    [switch]$FilterByModel,
     [switch]$EvaluateChat,
     [switch]$ValidateOnly,
     [ValidateRange(1, 100)]
@@ -12,6 +13,9 @@
 )
 
 $ErrorActionPreference = "Stop"
+if ($FilterByModel -and $EvaluateChat) {
+    throw "聊天仍为无过滤基线；请分别运行聊天评测和型号过滤检索评测。"
+}
 $taskRoot = Split-Path -Parent $PSScriptRoot
 $taskDataDirectory = Join-Path $taskRoot "datasets\evaluation\expanded-v1"
 $taskManifestPath = Join-Path $taskDataDirectory "corpus-manifest.json"
@@ -64,6 +68,9 @@ function Get-TaskMetrics {
         cases = $Rows.Count
         successfulRequests = $taskSuccessful.Count
         errors = $Rows.Count - $taskSuccessful.Count
+        filterByModel = [bool]$FilterByModel
+        missingModelResults = ($Rows | Measure-Object missingModelCount -Sum).Sum
+        otherModelResults = ($Rows | Measure-Object otherModelCount -Sum).Sum
         sourceRecallAtK = [Math]::Round(($Rows | Measure-Object recallAtK -Average).Average, 4)
         sourceLabelPrecisionAtK = [Math]::Round(($Rows | Measure-Object precisionAtK -Average).Average, 4)
         hitAtK = [Math]::Round(@($Rows | Where-Object hit).Count / $Rows.Count, 4)
@@ -135,6 +142,8 @@ if (-not $SkipImport) {
             $taskBody = @{
                 sourceId = $taskSource.sourceId
                 title = $taskSource.title
+                productModel = $taskSource.model
+                topic = $taskSource.topic
                 content = [System.IO.File]::ReadAllText((Join-Path $taskRoot $taskSource.contentPath), [System.Text.Encoding]::UTF8)
             }
             $taskResult = Invoke-TaskJson -Path "/api/v1/knowledge/index" -Method "POST" -Body $taskBody
@@ -149,10 +158,11 @@ if (-not $SkipImport) {
     if (@($taskImportRows | Where-Object { $_.error -ne "" }).Count -gt 0) {
         throw "部分资料入库失败，停止评测；详见 $taskRunDirectory\import.csv，修复后重新运行。"
     }
-    [System.IO.File]::WriteAllText($taskReceiptPath, (@{ manifestHash=$taskManifestHash; baseUrl=$taskBaseUrl; importedAt=(Get-Date -Format o); sourceCount=$taskSourcesById.Count } | ConvertTo-Json), [System.Text.UTF8Encoding]::new($false))
+    [System.IO.File]::WriteAllText($taskReceiptPath, (@{ metadataSchemaVersion=2; manifestHash=$taskManifestHash; baseUrl=$taskBaseUrl; importedAt=(Get-Date -Format o); sourceCount=$taskSourcesById.Count } | ConvertTo-Json), [System.Text.UTF8Encoding]::new($false))
 } else {
     if (-not (Test-Path -LiteralPath $taskReceiptPath)) { throw "没有完整入库记录，请先不带 SkipImport 运行。" }
     $taskReceipt = Get-Content -LiteralPath $taskReceiptPath -Raw -Encoding UTF8 | ConvertFrom-Json
+    if ($taskReceipt.metadataSchemaVersion -ne 2) { throw "旧入库记录没有型号元数据，请不带 SkipImport 重新导入。" }
     if ($taskReceipt.manifestHash -ne $taskManifestHash -or $taskReceipt.baseUrl -ne $taskBaseUrl) { throw "入库记录与当前清单或服务不一致，请重新导入。" }
     Write-Warning "跳过入库只依据本地记录；若数据库或 Lucene 已重建，请移除 SkipImport 后运行。"
 }
@@ -169,9 +179,16 @@ foreach ($taskCase in $taskRetrievalCases) {
         $taskCandidates = @()
         $taskWatch = [System.Diagnostics.Stopwatch]::StartNew()
         try {
-            $taskResponse = Invoke-TaskJson -Path ("/api/v1/knowledge/" + $taskRoute) -Method "POST" -Body @{ question=$taskCase.question; topK=$TopK }
+            $taskSearchBody = @{ question=$taskCase.question; topK=$TopK }
+            if ($FilterByModel) { $taskSearchBody.productModel = $taskCase.model }
+            $taskResponse = Invoke-TaskJson -Path ("/api/v1/knowledge/" + $taskRoute) -Method "POST" -Body $taskSearchBody
             if ($null -eq $taskResponse.results) { throw "响应缺少 results 列表。" }
             $taskCandidates = @($taskResponse.results)
+            if ($FilterByModel -and @($taskCandidates | Where-Object {
+                $_.productModel -cne $taskCase.model
+            }).Count -gt 0) {
+                throw "过滤结果包含其他型号或缺失型号，请检查两路过滤与响应字段。"
+            }
         } catch { $taskError = $_.Exception.Message } finally { $taskWatch.Stop() }
         $taskExpected = @($taskCase.expectedSourceIds)
         $taskActual = @($taskCandidates | ForEach-Object { $_.sourceId })
@@ -184,6 +201,9 @@ foreach ($taskCase in $taskRetrievalCases) {
         $taskValid = $taskError -eq ""
         $taskRows.Add([PSCustomObject]@{
             datasetVersion=$taskDataset.datasetVersion; split=$taskCase.split; caseId=$taskCase.caseId; group=$taskCase.group; model=$taskCase.model; question=$taskCase.question; route=$taskRoute; topK=$TopK
+            filterByModel=[bool]$FilterByModel
+            missingModelCount=@($taskCandidates | Where-Object { -not $_.productModel }).Count
+            otherModelCount=@($taskCandidates | Where-Object { $_.productModel -and $_.productModel -cne $taskCase.model }).Count
             expectedSourceIds=$taskExpected -join "|"; actualSourceIds=$taskActual -join "|"; returnedCount=$taskCandidates.Count
             recallAtK=if($taskValid){$taskMatched/$taskExpected.Count}else{0.0}
             precisionAtK=if($taskValid){$taskRelevant/$TopK}else{0.0}
@@ -193,7 +213,7 @@ foreach ($taskCase in $taskRetrievalCases) {
             reciprocalRank=if($taskValid -and $taskFirstRelevantRank -gt 0){1.0/$taskFirstRelevantRank}else{0.0}
             elapsedMs=$taskWatch.ElapsedMilliseconds; error=$taskError
         })
-        $taskRawItem = @{ caseId=$taskCase.caseId; split=$taskCase.split; route=$taskRoute; question=$taskCase.question; expectedSourceIds=$taskExpected; results=$taskCandidates; error=$taskError }
+        $taskRawItem = @{ filterByModel=[bool]$FilterByModel; caseId=$taskCase.caseId; split=$taskCase.split; route=$taskRoute; question=$taskCase.question; expectedSourceIds=$taskExpected; results=$taskCandidates; error=$taskError }
         [System.IO.File]::AppendAllText($taskRawPath, ($taskRawItem | ConvertTo-Json -Depth 12 -Compress) + "`n", [System.Text.UTF8Encoding]::new($false))
     }
     Write-Host "三路检索完成：$($taskCase.caseId)"
@@ -254,6 +274,7 @@ foreach ($taskSourceName in @("KnowledgeSearchService", "LuceneKeywordSearchServ
 }
 $taskMetadata = @{
     corpusVersion=$taskManifest.corpusVersion; datasetVersion=$taskDataset.datasetVersion; split=$Split; topK=$TopK
+    filterByModel=[bool]$FilterByModel; metadataSchemaVersion=2
     baseUrl=$taskBaseUrl; manifestSha256=$taskManifestHash; casesSha256=(Get-FileHash $taskCasesPath -Algorithm SHA256).Hash
     scriptSha256=(Get-FileHash $PSCommandPath -Algorithm SHA256).Hash; powerShellVersion=$PSVersionTable.PSVersion.ToString()
     backendSourceHashes=$taskBackendSourceHashes
@@ -267,7 +288,7 @@ $taskMetadata = @{
 $taskReport = [System.Text.StringBuilder]::new()
 [void]$taskReport.AppendLine("# 扩展评测运行结果")
 [void]$taskReport.AppendLine("")
-[void]$taskReport.AppendLine("问题集：$($taskDataset.datasetVersion)，分组：$Split，TopK=$TopK。")
+[void]$taskReport.AppendLine("问题集：$($taskDataset.datasetVersion)，分组：$Split，TopK=$TopK，型号过滤=$FilterByModel。")
 [void]$taskReport.AppendLine("")
 [void]$taskReport.AppendLine("| 路径 | 请求 | 错误 | 来源Recall | 来源标签Precision | 全部证据召回率 | MRR |")
 [void]$taskReport.AppendLine("|---|---:|---:|---:|---:|---:|---:|")

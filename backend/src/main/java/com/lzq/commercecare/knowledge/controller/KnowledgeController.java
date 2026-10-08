@@ -50,7 +50,9 @@ public class KnowledgeController {
         int indexedChunks = ingestionService.index(
                 request.sourceId(),
                 request.title(),
-                request.content()
+                request.content(),
+                request.productModel(),
+                request.topic()
         );
 
         return new KnowledgeIndexResponse(
@@ -65,7 +67,7 @@ public class KnowledgeController {
     ) {
         return toSearchResponse(
                 request.question(),
-                searchService.search(request.question(), request.topK())
+                searchService.search(request.question(), request.topK(), request.productModel())
         );
     }
 
@@ -77,7 +79,8 @@ public class KnowledgeController {
                 request.question(),
                 keywordSearchService.search(
                         request.question(),
-                        request.topK()
+                        request.topK(),
+                        request.productModel()
                 )
         );
     }
@@ -89,7 +92,8 @@ public class KnowledgeController {
         List<HybridSearchResponse.Result> results =
                 hybridSearchService.search(
                                 request.question(),
-                                request.topK()
+                                request.topK(),
+                                request.productModel()
                         )
                         .stream()
                         .map(this::toHybridResult)
@@ -117,6 +121,8 @@ public class KnowledgeController {
                 metadataText(document, "sourceId"),
                 metadataText(document, "title"),
                 metadataText(document, "category"),
+                metadataText(document, "productModel"),
+                metadataText(document, "topic"),
                 metadataInteger(document, "chunkIndex"),
                 document.getText(),
                 document.getScore()
@@ -134,6 +140,8 @@ public class KnowledgeController {
                 metadataText(document, "sourceId"),
                 metadataText(document, "title"),
                 metadataText(document, "category"),
+                metadataText(document, "productModel"),
+                metadataText(document, "topic"),
                 metadataInteger(document, "chunkIndex"),
                 document.getText(),
                 result.fusionScore(),

@@ -25,6 +25,9 @@ import org.apache.lucene.queryparser.classic.ParseException;
 import org.apache.lucene.queryparser.classic.QueryParser;
 import org.apache.lucene.search.IndexSearcher;
 import org.apache.lucene.search.Query;
+import org.apache.lucene.search.BooleanClause;
+import org.apache.lucene.search.BooleanQuery;
+import org.apache.lucene.search.TermQuery;
 import org.apache.lucene.search.ScoreDoc;
 import org.apache.lucene.search.TopDocs;
 import org.apache.lucene.search.similarities.BM25Similarity;
@@ -34,6 +37,9 @@ import org.springframework.ai.document.Document;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+/**
+ * 关键词召回：文本查询负责排序，精确型号过滤只限制候选资格。
+ */
 @Service
 public class LuceneKeywordSearchService {
 
@@ -42,6 +48,8 @@ public class LuceneKeywordSearchService {
     private static final String CONTENT_FIELD = "content";
     private static final String SOURCE_ID_FIELD = "sourceId";
     private static final String CATEGORY_FIELD = "category";
+    private static final String MODEL_FIELD = "productModel";
+    private static final String TOPIC_FIELD = "topic";
     private static final String CHUNK_INDEX_FIELD = "chunkIndex";
 
     private static final Map<String, Float> FIELD_BOOSTS =
@@ -83,6 +91,10 @@ public class LuceneKeywordSearchService {
     }
 
     public List<Document> search(String question, int topK) {
+        return search(question, topK, null);
+    }
+
+    public List<Document> search(String question, int topK, String productModel) {
         if (question == null || question.isBlank()) {
             return List.of();
         }
@@ -98,6 +110,14 @@ public class LuceneKeywordSearchService {
             );
 
             Query query = parser.parse(QueryParser.escape(question));
+            if (productModel != null) {
+                // FILTER不增加文本相关分数；TermQuery区分A2与A2-Plus。
+                query = new BooleanQuery.Builder()
+                        .add(query, BooleanClause.Occur.MUST)
+                        .add(new TermQuery(new Term(MODEL_FIELD, productModel)),
+                                BooleanClause.Occur.FILTER)
+                        .build();
+            }
             TopDocs topDocs = searcher.search(query, topK);
 
             List<Document> results = new ArrayList<>();
@@ -112,6 +132,12 @@ public class LuceneKeywordSearchService {
                 metadata.put(SOURCE_ID_FIELD, stored.get(SOURCE_ID_FIELD));
                 metadata.put("title", stored.get(TITLE_FIELD));
                 metadata.put(CATEGORY_FIELD, stored.get(CATEGORY_FIELD));
+                if (stored.get(MODEL_FIELD) != null) {
+                    metadata.put(MODEL_FIELD, stored.get(MODEL_FIELD));
+                }
+                if (stored.get(TOPIC_FIELD) != null) {
+                    metadata.put(TOPIC_FIELD, stored.get(TOPIC_FIELD));
+                }
                 metadata.put(
                         CHUNK_INDEX_FIELD,
                         Integer.parseInt(stored.get(CHUNK_INDEX_FIELD))
@@ -171,6 +197,15 @@ public class LuceneKeywordSearchService {
                 metadataText(metadata, CHUNK_INDEX_FIELD)
         ));
 
+        // StringField不做分词，型号仅作精确过滤并保存用于响应核验。
+        if (metadata.get(MODEL_FIELD) != null) {
+            document.add(new StringField(MODEL_FIELD,
+                    metadataText(metadata, MODEL_FIELD), Field.Store.YES));
+        }
+        if (metadata.get(TOPIC_FIELD) != null) {
+            document.add(new StringField(TOPIC_FIELD,
+                    metadataText(metadata, TOPIC_FIELD), Field.Store.YES));
+        }
         return document;
     }
 
