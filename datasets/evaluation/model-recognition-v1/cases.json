@@ -1,0 +1,425 @@
+{
+  "schemaVersion": 1,
+  "datasetVersion": "model-recognition-v1",
+  "description": "规则接口的合成开发回归用例，不是真实用户测试集；运行时目录不得读取本文件。",
+  "cases": [
+    {
+      "caseId": "ME-001",
+      "question": "SoundBee-A1怎么配对？",
+      "expectedStatus": "RESOLVED",
+      "expectedProductModel": "SoundBee-A1",
+      "expectedDetectedModels": [
+        "SoundBee-A1"
+      ],
+      "expectedUnknownMentions": []
+    },
+    {
+      "caseId": "ME-002",
+      "question": "soundbee-a1怎么配对？",
+      "expectedStatus": "RESOLVED",
+      "expectedProductModel": "SoundBee-A1",
+      "expectedDetectedModels": [
+        "SoundBee-A1"
+      ],
+      "expectedUnknownMentions": []
+    },
+    {
+      "caseId": "ME-003",
+      "question": "SoundBee-A2怎么配对？",
+      "expectedStatus": "RESOLVED",
+      "expectedProductModel": "SoundBee-A2",
+      "expectedDetectedModels": [
+        "SoundBee-A2"
+      ],
+      "expectedUnknownMentions": []
+    },
+    {
+      "caseId": "ME-004",
+      "question": "soundbee-a2怎么配对？",
+      "expectedStatus": "RESOLVED",
+      "expectedProductModel": "SoundBee-A2",
+      "expectedDetectedModels": [
+        "SoundBee-A2"
+      ],
+      "expectedUnknownMentions": []
+    },
+    {
+      "caseId": "ME-005",
+      "question": "SoundBee-A2-Plus怎么配对？",
+      "expectedStatus": "RESOLVED",
+      "expectedProductModel": "SoundBee-A2-Plus",
+      "expectedDetectedModels": [
+        "SoundBee-A2-Plus"
+      ],
+      "expectedUnknownMentions": []
+    },
+    {
+      "caseId": "ME-006",
+      "question": "soundbee-a2-plus怎么配对？",
+      "expectedStatus": "RESOLVED",
+      "expectedProductModel": "SoundBee-A2-Plus",
+      "expectedDetectedModels": [
+        "SoundBee-A2-Plus"
+      ],
+      "expectedUnknownMentions": []
+    },
+    {
+      "caseId": "ME-007",
+      "question": "SoundBee-A3怎么配对？",
+      "expectedStatus": "RESOLVED",
+      "expectedProductModel": "SoundBee-A3",
+      "expectedDetectedModels": [
+        "SoundBee-A3"
+      ],
+      "expectedUnknownMentions": []
+    },
+    {
+      "caseId": "ME-008",
+      "question": "soundbee-a3怎么配对？",
+      "expectedStatus": "RESOLVED",
+      "expectedProductModel": "SoundBee-A3",
+      "expectedDetectedModels": [
+        "SoundBee-A3"
+      ],
+      "expectedUnknownMentions": []
+    },
+    {
+      "caseId": "ME-009",
+      "question": "SoundBee-A3-Pro怎么配对？",
+      "expectedStatus": "RESOLVED",
+      "expectedProductModel": "SoundBee-A3-Pro",
+      "expectedDetectedModels": [
+        "SoundBee-A3-Pro"
+      ],
+      "expectedUnknownMentions": []
+    },
+    {
+      "caseId": "ME-010",
+      "question": "soundbee-a3-pro怎么配对？",
+      "expectedStatus": "RESOLVED",
+      "expectedProductModel": "SoundBee-A3-Pro",
+      "expectedDetectedModels": [
+        "SoundBee-A3-Pro"
+      ],
+      "expectedUnknownMentions": []
+    },
+    {
+      "caseId": "ME-011",
+      "question": "SoundBee-B1怎么配对？",
+      "expectedStatus": "RESOLVED",
+      "expectedProductModel": "SoundBee-B1",
+      "expectedDetectedModels": [
+        "SoundBee-B1"
+      ],
+      "expectedUnknownMentions": []
+    },
+    {
+      "caseId": "ME-012",
+      "question": "soundbee-b1怎么配对？",
+      "expectedStatus": "RESOLVED",
+      "expectedProductModel": "SoundBee-B1",
+      "expectedDetectedModels": [
+        "SoundBee-B1"
+      ],
+      "expectedUnknownMentions": []
+    },
+    {
+      "caseId": "ME-013",
+      "question": "SoundBee-B1-Plus怎么配对？",
+      "expectedStatus": "RESOLVED",
+      "expectedProductModel": "SoundBee-B1-Plus",
+      "expectedDetectedModels": [
+        "SoundBee-B1-Plus"
+      ],
+      "expectedUnknownMentions": []
+    },
+    {
+      "caseId": "ME-014",
+      "question": "soundbee-b1-plus怎么配对？",
+      "expectedStatus": "RESOLVED",
+      "expectedProductModel": "SoundBee-B1-Plus",
+      "expectedDetectedModels": [
+        "SoundBee-B1-Plus"
+      ],
+      "expectedUnknownMentions": []
+    },
+    {
+      "caseId": "ME-015",
+      "question": "SoundBee-B2怎么配对？",
+      "expectedStatus": "RESOLVED",
+      "expectedProductModel": "SoundBee-B2",
+      "expectedDetectedModels": [
+        "SoundBee-B2"
+      ],
+      "expectedUnknownMentions": []
+    },
+    {
+      "caseId": "ME-016",
+      "question": "soundbee-b2怎么配对？",
+      "expectedStatus": "RESOLVED",
+      "expectedProductModel": "SoundBee-B2",
+      "expectedDetectedModels": [
+        "SoundBee-B2"
+      ],
+      "expectedUnknownMentions": []
+    },
+    {
+      "caseId": "ME-017",
+      "question": "SoundBee-B2-Max怎么配对？",
+      "expectedStatus": "RESOLVED",
+      "expectedProductModel": "SoundBee-B2-Max",
+      "expectedDetectedModels": [
+        "SoundBee-B2-Max"
+      ],
+      "expectedUnknownMentions": []
+    },
+    {
+      "caseId": "ME-018",
+      "question": "soundbee-b2-max怎么配对？",
+      "expectedStatus": "RESOLVED",
+      "expectedProductModel": "SoundBee-B2-Max",
+      "expectedDetectedModels": [
+        "SoundBee-B2-Max"
+      ],
+      "expectedUnknownMentions": []
+    },
+    {
+      "caseId": "ME-019",
+      "question": "SoundBee-C1怎么配对？",
+      "expectedStatus": "RESOLVED",
+      "expectedProductModel": "SoundBee-C1",
+      "expectedDetectedModels": [
+        "SoundBee-C1"
+      ],
+      "expectedUnknownMentions": []
+    },
+    {
+      "caseId": "ME-020",
+      "question": "soundbee-c1怎么配对？",
+      "expectedStatus": "RESOLVED",
+      "expectedProductModel": "SoundBee-C1",
+      "expectedDetectedModels": [
+        "SoundBee-C1"
+      ],
+      "expectedUnknownMentions": []
+    },
+    {
+      "caseId": "ME-021",
+      "question": "SoundBee-C1-Pro怎么配对？",
+      "expectedStatus": "RESOLVED",
+      "expectedProductModel": "SoundBee-C1-Pro",
+      "expectedDetectedModels": [
+        "SoundBee-C1-Pro"
+      ],
+      "expectedUnknownMentions": []
+    },
+    {
+      "caseId": "ME-022",
+      "question": "soundbee-c1-pro怎么配对？",
+      "expectedStatus": "RESOLVED",
+      "expectedProductModel": "SoundBee-C1-Pro",
+      "expectedDetectedModels": [
+        "SoundBee-C1-Pro"
+      ],
+      "expectedUnknownMentions": []
+    },
+    {
+      "caseId": "ME-023",
+      "question": "请问SoundBee-A2-Plus怎么配对？",
+      "expectedStatus": "RESOLVED",
+      "expectedProductModel": "SoundBee-A2-Plus",
+      "expectedDetectedModels": [
+        "SoundBee-A2-Plus"
+      ],
+      "expectedUnknownMentions": []
+    },
+    {
+      "caseId": "ME-024",
+      "question": "SoundBee-A2坏了，soundbee-a2能换吗？",
+      "expectedStatus": "RESOLVED",
+      "expectedProductModel": "SoundBee-A2",
+      "expectedDetectedModels": [
+        "SoundBee-A2"
+      ],
+      "expectedUnknownMentions": []
+    },
+    {
+      "caseId": "ME-025",
+      "question": "SoundBee-A2. 怎么配对？",
+      "expectedStatus": "RESOLVED",
+      "expectedProductModel": "SoundBee-A2",
+      "expectedDetectedModels": [
+        "SoundBee-A2"
+      ],
+      "expectedUnknownMentions": []
+    },
+    {
+      "caseId": "ME-026",
+      "question": "耳机坏了能退吗？",
+      "expectedStatus": "MISSING",
+      "expectedProductModel": null,
+      "expectedDetectedModels": [],
+      "expectedUnknownMentions": []
+    },
+    {
+      "caseId": "ME-027",
+      "question": "A2怎么配对？",
+      "expectedStatus": "MISSING",
+      "expectedProductModel": null,
+      "expectedDetectedModels": [],
+      "expectedUnknownMentions": []
+    },
+    {
+      "caseId": "ME-028",
+      "question": "SoundBee A2怎么配对？",
+      "expectedStatus": "MISSING",
+      "expectedProductModel": null,
+      "expectedDetectedModels": [],
+      "expectedUnknownMentions": []
+    },
+    {
+      "caseId": "ME-029",
+      "question": "订单12345什么时候到？",
+      "expectedStatus": "MISSING",
+      "expectedProductModel": null,
+      "expectedDetectedModels": [],
+      "expectedUnknownMentions": []
+    },
+    {
+      "caseId": "ME-030",
+      "question": "OtherBrand-A2怎么配对？",
+      "expectedStatus": "MISSING",
+      "expectedProductModel": null,
+      "expectedDetectedModels": [],
+      "expectedUnknownMentions": []
+    },
+    {
+      "caseId": "ME-031",
+      "question": "SoundBee-Z9能退吗？",
+      "expectedStatus": "UNKNOWN",
+      "expectedProductModel": null,
+      "expectedDetectedModels": [],
+      "expectedUnknownMentions": [
+        "SoundBee-Z9"
+      ]
+    },
+    {
+      "caseId": "ME-032",
+      "question": "SoundBee-A2Plus能退吗？",
+      "expectedStatus": "UNKNOWN",
+      "expectedProductModel": null,
+      "expectedDetectedModels": [],
+      "expectedUnknownMentions": [
+        "SoundBee-A2Plus"
+      ]
+    },
+    {
+      "caseId": "ME-033",
+      "question": "SoundBee-A2-Unknown能退吗？",
+      "expectedStatus": "UNKNOWN",
+      "expectedProductModel": null,
+      "expectedDetectedModels": [],
+      "expectedUnknownMentions": [
+        "SoundBee-A2-Unknown"
+      ]
+    },
+    {
+      "caseId": "ME-034",
+      "question": "SoundBee-A2_Pro能退吗？",
+      "expectedStatus": "UNKNOWN",
+      "expectedProductModel": null,
+      "expectedDetectedModels": [],
+      "expectedUnknownMentions": [
+        "SoundBee-A2_Pro"
+      ]
+    },
+    {
+      "caseId": "ME-035",
+      "question": "SoundBee-A2 Plus能退吗？",
+      "expectedStatus": "UNKNOWN",
+      "expectedProductModel": null,
+      "expectedDetectedModels": [],
+      "expectedUnknownMentions": [
+        "SoundBee-A2 Plus"
+      ]
+    },
+    {
+      "caseId": "ME-036",
+      "question": "SoundBee-A2.5能退吗？",
+      "expectedStatus": "UNKNOWN",
+      "expectedProductModel": null,
+      "expectedDetectedModels": [],
+      "expectedUnknownMentions": [
+        "SoundBee-A2.5"
+      ]
+    },
+    {
+      "caseId": "ME-037",
+      "question": "SoundBee-A2和SoundBee-A2-Plus有什么区别？",
+      "expectedStatus": "MULTIPLE",
+      "expectedProductModel": null,
+      "expectedDetectedModels": [
+        "SoundBee-A2",
+        "SoundBee-A2-Plus"
+      ],
+      "expectedUnknownMentions": []
+    },
+    {
+      "caseId": "ME-038",
+      "question": "不是SoundBee-A2，是SoundBee-A3。",
+      "expectedStatus": "MULTIPLE",
+      "expectedProductModel": null,
+      "expectedDetectedModels": [
+        "SoundBee-A2",
+        "SoundBee-A3"
+      ],
+      "expectedUnknownMentions": []
+    },
+    {
+      "caseId": "ME-039",
+      "question": "SoundBee-A2和SoundBee-Z9有什么区别？",
+      "expectedStatus": "UNKNOWN",
+      "expectedProductModel": null,
+      "expectedDetectedModels": [
+        "SoundBee-A2"
+      ],
+      "expectedUnknownMentions": [
+        "SoundBee-Z9"
+      ]
+    },
+    {
+      "caseId": "ME-040",
+      "question": "fooSoundBee-A2坏了",
+      "expectedStatus": "MISSING",
+      "expectedProductModel": null,
+      "expectedDetectedModels": [],
+      "expectedUnknownMentions": []
+    },
+    {
+      "caseId": "ME-041",
+      "question": "X-SoundBee-A2坏了",
+      "expectedStatus": "MISSING",
+      "expectedProductModel": null,
+      "expectedDetectedModels": [],
+      "expectedUnknownMentions": []
+    },
+    {
+      "caseId": "ME-042",
+      "question": "_SoundBee-A2坏了",
+      "expectedStatus": "MISSING",
+      "expectedProductModel": null,
+      "expectedDetectedModels": [],
+      "expectedUnknownMentions": []
+    },
+    {
+      "caseId": "ME-043",
+      "question": "SoundBee-Z9和soundbee-z9是什么？",
+      "expectedStatus": "UNKNOWN",
+      "expectedProductModel": null,
+      "expectedDetectedModels": [],
+      "expectedUnknownMentions": [
+        "SoundBee-Z9"
+      ]
+    }
+  ]
+}
