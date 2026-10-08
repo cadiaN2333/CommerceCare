@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "datasetVersion": "model-recognition-v1",
+  "datasetVersion": "model-recognition-v1.1",
   "description": "规则接口的合成开发回归用例，不是真实用户测试集；运行时目录不得读取本文件。",
   "cases": [
     {
@@ -11,7 +11,10 @@
       "expectedDetectedModels": [
         "SoundBee-A1"
       ],
-      "expectedUnknownMentions": []
+      "expectedUnknownMentions": [],
+      "expectedMentions": [
+        "SoundBee-A1"
+      ]
     },
     {
       "caseId": "ME-002",
@@ -21,7 +24,10 @@
       "expectedDetectedModels": [
         "SoundBee-A1"
       ],
-      "expectedUnknownMentions": []
+      "expectedUnknownMentions": [],
+      "expectedMentions": [
+        "soundbee-a1"
+      ]
     },
     {
       "caseId": "ME-003",
@@ -31,7 +37,10 @@
       "expectedDetectedModels": [
         "SoundBee-A2"
       ],
-      "expectedUnknownMentions": []
+      "expectedUnknownMentions": [],
+      "expectedMentions": [
+        "SoundBee-A2"
+      ]
     },
     {
       "caseId": "ME-004",
@@ -41,7 +50,10 @@
       "expectedDetectedModels": [
         "SoundBee-A2"
       ],
-      "expectedUnknownMentions": []
+      "expectedUnknownMentions": [],
+      "expectedMentions": [
+        "soundbee-a2"
+      ]
     },
     {
       "caseId": "ME-005",
@@ -51,7 +63,10 @@
       "expectedDetectedModels": [
         "SoundBee-A2-Plus"
       ],
-      "expectedUnknownMentions": []
+      "expectedUnknownMentions": [],
+      "expectedMentions": [
+        "SoundBee-A2-Plus"
+      ]
     },
     {
       "caseId": "ME-006",
@@ -61,7 +76,10 @@
       "expectedDetectedModels": [
         "SoundBee-A2-Plus"
       ],
-      "expectedUnknownMentions": []
+      "expectedUnknownMentions": [],
+      "expectedMentions": [
+        "soundbee-a2-plus"
+      ]
     },
     {
       "caseId": "ME-007",
@@ -71,7 +89,10 @@
       "expectedDetectedModels": [
         "SoundBee-A3"
       ],
-      "expectedUnknownMentions": []
+      "expectedUnknownMentions": [],
+      "expectedMentions": [
+        "SoundBee-A3"
+      ]
     },
     {
       "caseId": "ME-008",
@@ -81,7 +102,10 @@
       "expectedDetectedModels": [
         "SoundBee-A3"
       ],
-      "expectedUnknownMentions": []
+      "expectedUnknownMentions": [],
+      "expectedMentions": [
+        "soundbee-a3"
+      ]
     },
     {
       "caseId": "ME-009",
@@ -91,7 +115,10 @@
       "expectedDetectedModels": [
         "SoundBee-A3-Pro"
       ],
-      "expectedUnknownMentions": []
+      "expectedUnknownMentions": [],
+      "expectedMentions": [
+        "SoundBee-A3-Pro"
+      ]
     },
     {
       "caseId": "ME-010",
@@ -101,7 +128,10 @@
       "expectedDetectedModels": [
         "SoundBee-A3-Pro"
       ],
-      "expectedUnknownMentions": []
+      "expectedUnknownMentions": [],
+      "expectedMentions": [
+        "soundbee-a3-pro"
+      ]
     },
     {
       "caseId": "ME-011",
@@ -111,7 +141,10 @@
       "expectedDetectedModels": [
         "SoundBee-B1"
       ],
-      "expectedUnknownMentions": []
+      "expectedUnknownMentions": [],
+      "expectedMentions": [
+        "SoundBee-B1"
+      ]
     },
     {
       "caseId": "ME-012",
@@ -121,7 +154,10 @@
       "expectedDetectedModels": [
         "SoundBee-B1"
       ],
-      "expectedUnknownMentions": []
+      "expectedUnknownMentions": [],
+      "expectedMentions": [
+        "soundbee-b1"
+      ]
     },
     {
       "caseId": "ME-013",
@@ -131,7 +167,10 @@
       "expectedDetectedModels": [
         "SoundBee-B1-Plus"
       ],
-      "expectedUnknownMentions": []
+      "expectedUnknownMentions": [],
+      "expectedMentions": [
+        "SoundBee-B1-Plus"
+      ]
     },
     {
       "caseId": "ME-014",
@@ -141,7 +180,10 @@
       "expectedDetectedModels": [
         "SoundBee-B1-Plus"
       ],
-      "expectedUnknownMentions": []
+      "expectedUnknownMentions": [],
+      "expectedMentions": [
+        "soundbee-b1-plus"
+      ]
     },
     {
       "caseId": "ME-015",
@@ -151,7 +193,10 @@
       "expectedDetectedModels": [
         "SoundBee-B2"
       ],
-      "expectedUnknownMentions": []
+      "expectedUnknownMentions": [],
+      "expectedMentions": [
+        "SoundBee-B2"
+      ]
     },
     {
       "caseId": "ME-016",
@@ -161,7 +206,10 @@
       "expectedDetectedModels": [
         "SoundBee-B2"
       ],
-      "expectedUnknownMentions": []
+      "expectedUnknownMentions": [],
+      "expectedMentions": [
+        "soundbee-b2"
+      ]
     },
     {
       "caseId": "ME-017",
@@ -171,7 +219,10 @@
       "expectedDetectedModels": [
         "SoundBee-B2-Max"
       ],
-      "expectedUnknownMentions": []
+      "expectedUnknownMentions": [],
+      "expectedMentions": [
+        "SoundBee-B2-Max"
+      ]
     },
     {
       "caseId": "ME-018",
@@ -181,7 +232,10 @@
       "expectedDetectedModels": [
         "SoundBee-B2-Max"
       ],
-      "expectedUnknownMentions": []
+      "expectedUnknownMentions": [],
+      "expectedMentions": [
+        "soundbee-b2-max"
+      ]
     },
     {
       "caseId": "ME-019",
@@ -191,7 +245,10 @@
       "expectedDetectedModels": [
         "SoundBee-C1"
       ],
-      "expectedUnknownMentions": []
+      "expectedUnknownMentions": [],
+      "expectedMentions": [
+        "SoundBee-C1"
+      ]
     },
     {
       "caseId": "ME-020",
@@ -201,7 +258,10 @@
       "expectedDetectedModels": [
         "SoundBee-C1"
       ],
-      "expectedUnknownMentions": []
+      "expectedUnknownMentions": [],
+      "expectedMentions": [
+        "soundbee-c1"
+      ]
     },
     {
       "caseId": "ME-021",
@@ -211,7 +271,10 @@
       "expectedDetectedModels": [
         "SoundBee-C1-Pro"
       ],
-      "expectedUnknownMentions": []
+      "expectedUnknownMentions": [],
+      "expectedMentions": [
+        "SoundBee-C1-Pro"
+      ]
     },
     {
       "caseId": "ME-022",
@@ -221,7 +284,10 @@
       "expectedDetectedModels": [
         "SoundBee-C1-Pro"
       ],
-      "expectedUnknownMentions": []
+      "expectedUnknownMentions": [],
+      "expectedMentions": [
+        "soundbee-c1-pro"
+      ]
     },
     {
       "caseId": "ME-023",
@@ -231,7 +297,10 @@
       "expectedDetectedModels": [
         "SoundBee-A2-Plus"
       ],
-      "expectedUnknownMentions": []
+      "expectedUnknownMentions": [],
+      "expectedMentions": [
+        "SoundBee-A2-Plus"
+      ]
     },
     {
       "caseId": "ME-024",
@@ -241,7 +310,11 @@
       "expectedDetectedModels": [
         "SoundBee-A2"
       ],
-      "expectedUnknownMentions": []
+      "expectedUnknownMentions": [],
+      "expectedMentions": [
+        "SoundBee-A2",
+        "soundbee-a2"
+      ]
     },
     {
       "caseId": "ME-025",
@@ -251,7 +324,10 @@
       "expectedDetectedModels": [
         "SoundBee-A2"
       ],
-      "expectedUnknownMentions": []
+      "expectedUnknownMentions": [],
+      "expectedMentions": [
+        "SoundBee-A2"
+      ]
     },
     {
       "caseId": "ME-026",
@@ -259,7 +335,8 @@
       "expectedStatus": "MISSING",
       "expectedProductModel": null,
       "expectedDetectedModels": [],
-      "expectedUnknownMentions": []
+      "expectedUnknownMentions": [],
+      "expectedMentions": []
     },
     {
       "caseId": "ME-027",
@@ -267,7 +344,8 @@
       "expectedStatus": "MISSING",
       "expectedProductModel": null,
       "expectedDetectedModels": [],
-      "expectedUnknownMentions": []
+      "expectedUnknownMentions": [],
+      "expectedMentions": []
     },
     {
       "caseId": "ME-028",
@@ -275,7 +353,8 @@
       "expectedStatus": "MISSING",
       "expectedProductModel": null,
       "expectedDetectedModels": [],
-      "expectedUnknownMentions": []
+      "expectedUnknownMentions": [],
+      "expectedMentions": []
     },
     {
       "caseId": "ME-029",
@@ -283,7 +362,8 @@
       "expectedStatus": "MISSING",
       "expectedProductModel": null,
       "expectedDetectedModels": [],
-      "expectedUnknownMentions": []
+      "expectedUnknownMentions": [],
+      "expectedMentions": []
     },
     {
       "caseId": "ME-030",
@@ -291,7 +371,8 @@
       "expectedStatus": "MISSING",
       "expectedProductModel": null,
       "expectedDetectedModels": [],
-      "expectedUnknownMentions": []
+      "expectedUnknownMentions": [],
+      "expectedMentions": []
     },
     {
       "caseId": "ME-031",
@@ -300,6 +381,9 @@
       "expectedProductModel": null,
       "expectedDetectedModels": [],
       "expectedUnknownMentions": [
+        "SoundBee-Z9"
+      ],
+      "expectedMentions": [
         "SoundBee-Z9"
       ]
     },
@@ -311,6 +395,9 @@
       "expectedDetectedModels": [],
       "expectedUnknownMentions": [
         "SoundBee-A2Plus"
+      ],
+      "expectedMentions": [
+        "SoundBee-A2Plus"
       ]
     },
     {
@@ -320,6 +407,9 @@
       "expectedProductModel": null,
       "expectedDetectedModels": [],
       "expectedUnknownMentions": [
+        "SoundBee-A2-Unknown"
+      ],
+      "expectedMentions": [
         "SoundBee-A2-Unknown"
       ]
     },
@@ -331,6 +421,9 @@
       "expectedDetectedModels": [],
       "expectedUnknownMentions": [
         "SoundBee-A2_Pro"
+      ],
+      "expectedMentions": [
+        "SoundBee-A2_Pro"
       ]
     },
     {
@@ -341,6 +434,9 @@
       "expectedDetectedModels": [],
       "expectedUnknownMentions": [
         "SoundBee-A2 Plus"
+      ],
+      "expectedMentions": [
+        "SoundBee-A2 Plus"
       ]
     },
     {
@@ -350,6 +446,9 @@
       "expectedProductModel": null,
       "expectedDetectedModels": [],
       "expectedUnknownMentions": [
+        "SoundBee-A2.5"
+      ],
+      "expectedMentions": [
         "SoundBee-A2.5"
       ]
     },
@@ -362,7 +461,11 @@
         "SoundBee-A2",
         "SoundBee-A2-Plus"
       ],
-      "expectedUnknownMentions": []
+      "expectedUnknownMentions": [],
+      "expectedMentions": [
+        "SoundBee-A2",
+        "SoundBee-A2-Plus"
+      ]
     },
     {
       "caseId": "ME-038",
@@ -373,7 +476,11 @@
         "SoundBee-A2",
         "SoundBee-A3"
       ],
-      "expectedUnknownMentions": []
+      "expectedUnknownMentions": [],
+      "expectedMentions": [
+        "SoundBee-A2",
+        "SoundBee-A3"
+      ]
     },
     {
       "caseId": "ME-039",
@@ -385,6 +492,10 @@
       ],
       "expectedUnknownMentions": [
         "SoundBee-Z9"
+      ],
+      "expectedMentions": [
+        "SoundBee-A2",
+        "SoundBee-Z9"
       ]
     },
     {
@@ -393,7 +504,8 @@
       "expectedStatus": "MISSING",
       "expectedProductModel": null,
       "expectedDetectedModels": [],
-      "expectedUnknownMentions": []
+      "expectedUnknownMentions": [],
+      "expectedMentions": []
     },
     {
       "caseId": "ME-041",
@@ -401,7 +513,8 @@
       "expectedStatus": "MISSING",
       "expectedProductModel": null,
       "expectedDetectedModels": [],
-      "expectedUnknownMentions": []
+      "expectedUnknownMentions": [],
+      "expectedMentions": []
     },
     {
       "caseId": "ME-042",
@@ -409,7 +522,8 @@
       "expectedStatus": "MISSING",
       "expectedProductModel": null,
       "expectedDetectedModels": [],
-      "expectedUnknownMentions": []
+      "expectedUnknownMentions": [],
+      "expectedMentions": []
     },
     {
       "caseId": "ME-043",
@@ -419,6 +533,10 @@
       "expectedDetectedModels": [],
       "expectedUnknownMentions": [
         "SoundBee-Z9"
+      ],
+      "expectedMentions": [
+        "SoundBee-Z9",
+        "soundbee-z9"
       ]
     }
   ]
