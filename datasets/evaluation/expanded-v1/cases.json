@@ -1,0 +1,1278 @@
+{
+  "schemaVersion": 1,
+  "datasetVersion": "commercecare-expanded-v1",
+  "createdDate": "2026-10-08",
+  "splitMethod": "按型号分组：7个型号用于开发，3个型号问题保留验证；验证问题另含不同表述。合成公开数据不等同真正盲测。",
+  "cases": [
+    {
+      "caseId": "EC-01-01",
+      "split": "dev",
+      "model": "SoundBee-A2",
+      "group": "条件边界",
+      "kind": "retrieval",
+      "question": "SoundBee-A2 签收恰好7天，商品没有拆封、配件齐全，能申请无理由退货吗？",
+      "expectedStatus": "ANSWERED",
+      "expectedSourceIds": [
+        "expanded-v1-soundbee-a2-return"
+      ],
+      "expectedAnswerPoints": "处于包含边界的退货期限，按假设条件可申请；不能声称已审核订单。"
+    },
+    {
+      "caseId": "EC-01-02",
+      "split": "dev",
+      "model": "SoundBee-A2",
+      "group": "条件边界",
+      "kind": "retrieval",
+      "question": "SoundBee-A2 签收第15天，确认有质量问题，应该申请换货还是维修？",
+      "expectedStatus": "ANSWERED",
+      "expectedSourceIds": [
+        "expanded-v1-soundbee-a2-quality"
+      ],
+      "expectedAnswerPoints": "含第15天，可申请换货。"
+    },
+    {
+      "caseId": "EC-01-03",
+      "split": "dev",
+      "model": "SoundBee-A2",
+      "group": "长尾",
+      "kind": "retrieval",
+      "question": "买的SoundBee-A2到手16天了，还在180天保修内，毛病已经确认为质量问题，该走哪种售后？",
+      "expectedStatus": "ANSWERED",
+      "expectedSourceIds": [
+        "expanded-v1-soundbee-a2-quality"
+      ],
+      "expectedAnswerPoints": "超过换货期限且仍在保修期内，走维修；不能承诺免费。"
+    },
+    {
+      "caseId": "EC-01-04",
+      "split": "dev",
+      "model": "SoundBee-A2",
+      "group": "FAQ",
+      "kind": "retrieval",
+      "question": "SoundBee-A2 首次连接手机，盒上的配对键要按几秒，之后去哪里选耳机？",
+      "expectedStatus": "ANSWERED",
+      "expectedSourceIds": [
+        "expanded-v1-soundbee-a2-pairing"
+      ],
+      "expectedAnswerPoints": "按3秒至蓝白闪烁，在蓝牙列表选择本型号。"
+    },
+    {
+      "caseId": "EC-01-05",
+      "split": "dev",
+      "model": "SoundBee-A2",
+      "group": "长尾",
+      "kind": "retrieval",
+      "question": "我的SoundBee-A2充电盒用哪种接口，怎么从灯的颜色看出电已充满？",
+      "expectedStatus": "ANSWERED",
+      "expectedSourceIds": [
+        "expanded-v1-soundbee-a2-charging"
+      ],
+      "expectedAnswerPoints": "接口USB-C，充满为绿色常亮。"
+    },
+    {
+      "caseId": "EC-01-06",
+      "split": "dev",
+      "model": "SoundBee-A2",
+      "group": "FAQ",
+      "kind": "retrieval",
+      "question": "SoundBee-A2 的运单已经揽收，但超过24小时没有新轨迹，先核对什么再找谁？",
+      "expectedStatus": "ANSWERED",
+      "expectedSourceIds": [
+        "expanded-v1-soundbee-a2-logistics"
+      ],
+      "expectedAnswerPoints": "先核对运单号和发货时间，联系承运商，无法定位则人工客服；不声称已查订单。"
+    },
+    {
+      "caseId": "EC-01-07",
+      "split": "dev",
+      "model": "SoundBee-A2",
+      "group": "长尾",
+      "kind": "retrieval",
+      "question": "买SoundBee-A2的电子发票申请入口在哪，演示处理需要几个工作日，开出来去哪下载？",
+      "expectedStatus": "ANSWERED",
+      "expectedSourceIds": [
+        "expanded-v1-soundbee-a2-invoice"
+      ],
+      "expectedAnswerPoints": "订单详情申请，1个工作日，在发票记录下载。"
+    },
+    {
+      "caseId": "EC-01-08",
+      "split": "dev",
+      "model": "SoundBee-A2",
+      "group": "多来源",
+      "kind": "retrieval",
+      "question": "SoundBee-A2 签收16天、确认质量问题且仍在保修期内，该走哪种售后？同时首次配对键要按多久？",
+      "expectedStatus": "ANSWERED",
+      "expectedSourceIds": [
+        "expanded-v1-soundbee-a2-quality",
+        "expanded-v1-soundbee-a2-pairing"
+      ],
+      "expectedAnswerPoints": "售后走维修，配对键按3秒；两项结论分别有资料来源。"
+    },
+    {
+      "caseId": "EC-01-09",
+      "split": "dev",
+      "model": "SoundBee-A2",
+      "group": "无答案",
+      "kind": "unanswerable",
+      "question": "SoundBee-A2 支持哪些蓝牙编码格式，是否支持LDAC？",
+      "expectedStatus": "INSUFFICIENT_EVIDENCE",
+      "expectedSourceIds": [],
+      "expectedAnswerPoints": "未提供蓝牙编码信息，不能编造SBC、AAC或LDAC参数。"
+    },
+    {
+      "caseId": "EC-01-10",
+      "split": "dev",
+      "model": "SoundBee-A2",
+      "group": "无答案",
+      "kind": "unanswerable",
+      "question": "SoundBee-A2 已经超过180天保修期，维修需要支付多少钱？",
+      "expectedStatus": "INSUFFICIENT_EVIDENCE",
+      "expectedSourceIds": [],
+      "expectedAnswerPoints": "没有过保维修价格，不得编造金额或免费承诺。"
+    },
+    {
+      "caseId": "EC-02-01",
+      "split": "dev",
+      "model": "SoundBee-A2-Plus",
+      "group": "条件边界",
+      "kind": "retrieval",
+      "question": "SoundBee-A2-Plus 签收恰好7天，商品没有拆封、配件齐全，能申请无理由退货吗？",
+      "expectedStatus": "ANSWERED",
+      "expectedSourceIds": [
+        "expanded-v1-soundbee-a2-plus-return"
+      ],
+      "expectedAnswerPoints": "处于包含边界的退货期限，按假设条件可申请；不能声称已审核订单。"
+    },
+    {
+      "caseId": "EC-02-02",
+      "split": "dev",
+      "model": "SoundBee-A2-Plus",
+      "group": "条件边界",
+      "kind": "retrieval",
+      "question": "SoundBee-A2-Plus 签收第30天，确认有质量问题，应该申请换货还是维修？",
+      "expectedStatus": "ANSWERED",
+      "expectedSourceIds": [
+        "expanded-v1-soundbee-a2-plus-quality"
+      ],
+      "expectedAnswerPoints": "含第30天，可申请换货。"
+    },
+    {
+      "caseId": "EC-02-03",
+      "split": "dev",
+      "model": "SoundBee-A2-Plus",
+      "group": "长尾",
+      "kind": "retrieval",
+      "question": "买的SoundBee-A2-Plus到手31天了，还在365天保修内，毛病已经确认为质量问题，该走哪种售后？",
+      "expectedStatus": "ANSWERED",
+      "expectedSourceIds": [
+        "expanded-v1-soundbee-a2-plus-quality"
+      ],
+      "expectedAnswerPoints": "超过换货期限且仍在保修期内，走维修；不能承诺免费。"
+    },
+    {
+      "caseId": "EC-02-04",
+      "split": "dev",
+      "model": "SoundBee-A2-Plus",
+      "group": "FAQ",
+      "kind": "retrieval",
+      "question": "SoundBee-A2-Plus 首次连接手机，盒上的配对键要按几秒，之后去哪里选耳机？",
+      "expectedStatus": "ANSWERED",
+      "expectedSourceIds": [
+        "expanded-v1-soundbee-a2-plus-pairing"
+      ],
+      "expectedAnswerPoints": "按5秒至蓝白闪烁，在蓝牙列表选择本型号。"
+    },
+    {
+      "caseId": "EC-02-05",
+      "split": "dev",
+      "model": "SoundBee-A2-Plus",
+      "group": "长尾",
+      "kind": "retrieval",
+      "question": "我的SoundBee-A2-Plus充电盒用哪种接口，怎么从灯的颜色看出电已充满？",
+      "expectedStatus": "ANSWERED",
+      "expectedSourceIds": [
+        "expanded-v1-soundbee-a2-plus-charging"
+      ],
+      "expectedAnswerPoints": "接口USB-C，充满为白色常亮。"
+    },
+    {
+      "caseId": "EC-02-06",
+      "split": "dev",
+      "model": "SoundBee-A2-Plus",
+      "group": "FAQ",
+      "kind": "retrieval",
+      "question": "SoundBee-A2-Plus 的运单已经揽收，但超过36小时没有新轨迹，先核对什么再找谁？",
+      "expectedStatus": "ANSWERED",
+      "expectedSourceIds": [
+        "expanded-v1-soundbee-a2-plus-logistics"
+      ],
+      "expectedAnswerPoints": "先核对运单号和发货时间，联系承运商，无法定位则人工客服；不声称已查订单。"
+    },
+    {
+      "caseId": "EC-02-07",
+      "split": "dev",
+      "model": "SoundBee-A2-Plus",
+      "group": "长尾",
+      "kind": "retrieval",
+      "question": "买SoundBee-A2-Plus的电子发票申请入口在哪，演示处理需要几个工作日，开出来去哪下载？",
+      "expectedStatus": "ANSWERED",
+      "expectedSourceIds": [
+        "expanded-v1-soundbee-a2-plus-invoice"
+      ],
+      "expectedAnswerPoints": "订单详情申请，2个工作日，在发票记录下载。"
+    },
+    {
+      "caseId": "EC-02-08",
+      "split": "dev",
+      "model": "SoundBee-A2-Plus",
+      "group": "多来源",
+      "kind": "retrieval",
+      "question": "SoundBee-A2-Plus 签收31天、确认质量问题且仍在保修期内，该走哪种售后？同时首次配对键要按多久？",
+      "expectedStatus": "ANSWERED",
+      "expectedSourceIds": [
+        "expanded-v1-soundbee-a2-plus-quality",
+        "expanded-v1-soundbee-a2-plus-pairing"
+      ],
+      "expectedAnswerPoints": "售后走维修，配对键按5秒；两项结论分别有资料来源。"
+    },
+    {
+      "caseId": "EC-02-09",
+      "split": "dev",
+      "model": "SoundBee-A2-Plus",
+      "group": "无答案",
+      "kind": "unanswerable",
+      "question": "SoundBee-A2-Plus 支持哪些蓝牙编码格式，是否支持LDAC？",
+      "expectedStatus": "INSUFFICIENT_EVIDENCE",
+      "expectedSourceIds": [],
+      "expectedAnswerPoints": "未提供蓝牙编码信息，不能编造SBC、AAC或LDAC参数。"
+    },
+    {
+      "caseId": "EC-02-10",
+      "split": "dev",
+      "model": "SoundBee-A2-Plus",
+      "group": "无答案",
+      "kind": "unanswerable",
+      "question": "SoundBee-A2-Plus 已经超过365天保修期，维修需要支付多少钱？",
+      "expectedStatus": "INSUFFICIENT_EVIDENCE",
+      "expectedSourceIds": [],
+      "expectedAnswerPoints": "没有过保维修价格，不得编造金额或免费承诺。"
+    },
+    {
+      "caseId": "EC-03-01",
+      "split": "dev",
+      "model": "SoundBee-A3",
+      "group": "条件边界",
+      "kind": "retrieval",
+      "question": "SoundBee-A3 签收恰好10天，商品没有拆封、配件齐全，能申请无理由退货吗？",
+      "expectedStatus": "ANSWERED",
+      "expectedSourceIds": [
+        "expanded-v1-soundbee-a3-return"
+      ],
+      "expectedAnswerPoints": "处于包含边界的退货期限，按假设条件可申请；不能声称已审核订单。"
+    },
+    {
+      "caseId": "EC-03-02",
+      "split": "dev",
+      "model": "SoundBee-A3",
+      "group": "条件边界",
+      "kind": "retrieval",
+      "question": "SoundBee-A3 签收第20天，确认有质量问题，应该申请换货还是维修？",
+      "expectedStatus": "ANSWERED",
+      "expectedSourceIds": [
+        "expanded-v1-soundbee-a3-quality"
+      ],
+      "expectedAnswerPoints": "含第20天，可申请换货。"
+    },
+    {
+      "caseId": "EC-03-03",
+      "split": "dev",
+      "model": "SoundBee-A3",
+      "group": "长尾",
+      "kind": "retrieval",
+      "question": "买的SoundBee-A3到手21天了，还在365天保修内，毛病已经确认为质量问题，该走哪种售后？",
+      "expectedStatus": "ANSWERED",
+      "expectedSourceIds": [
+        "expanded-v1-soundbee-a3-quality"
+      ],
+      "expectedAnswerPoints": "超过换货期限且仍在保修期内，走维修；不能承诺免费。"
+    },
+    {
+      "caseId": "EC-03-04",
+      "split": "dev",
+      "model": "SoundBee-A3",
+      "group": "FAQ",
+      "kind": "retrieval",
+      "question": "SoundBee-A3 首次连接手机，盒上的配对键要按几秒，之后去哪里选耳机？",
+      "expectedStatus": "ANSWERED",
+      "expectedSourceIds": [
+        "expanded-v1-soundbee-a3-pairing"
+      ],
+      "expectedAnswerPoints": "按2秒至蓝白闪烁，在蓝牙列表选择本型号。"
+    },
+    {
+      "caseId": "EC-03-05",
+      "split": "dev",
+      "model": "SoundBee-A3",
+      "group": "长尾",
+      "kind": "retrieval",
+      "question": "我的SoundBee-A3充电盒用哪种接口，怎么从灯的颜色看出电已充满？",
+      "expectedStatus": "ANSWERED",
+      "expectedSourceIds": [
+        "expanded-v1-soundbee-a3-charging"
+      ],
+      "expectedAnswerPoints": "接口USB-C，充满为绿色常亮。"
+    },
+    {
+      "caseId": "EC-03-06",
+      "split": "dev",
+      "model": "SoundBee-A3",
+      "group": "FAQ",
+      "kind": "retrieval",
+      "question": "SoundBee-A3 的运单已经揽收，但超过48小时没有新轨迹，先核对什么再找谁？",
+      "expectedStatus": "ANSWERED",
+      "expectedSourceIds": [
+        "expanded-v1-soundbee-a3-logistics"
+      ],
+      "expectedAnswerPoints": "先核对运单号和发货时间，联系承运商，无法定位则人工客服；不声称已查订单。"
+    },
+    {
+      "caseId": "EC-03-07",
+      "split": "dev",
+      "model": "SoundBee-A3",
+      "group": "长尾",
+      "kind": "retrieval",
+      "question": "买SoundBee-A3的电子发票申请入口在哪，演示处理需要几个工作日，开出来去哪下载？",
+      "expectedStatus": "ANSWERED",
+      "expectedSourceIds": [
+        "expanded-v1-soundbee-a3-invoice"
+      ],
+      "expectedAnswerPoints": "订单详情申请，1个工作日，在发票记录下载。"
+    },
+    {
+      "caseId": "EC-03-08",
+      "split": "dev",
+      "model": "SoundBee-A3",
+      "group": "多来源",
+      "kind": "retrieval",
+      "question": "SoundBee-A3 签收21天、确认质量问题且仍在保修期内，该走哪种售后？同时首次配对键要按多久？",
+      "expectedStatus": "ANSWERED",
+      "expectedSourceIds": [
+        "expanded-v1-soundbee-a3-quality",
+        "expanded-v1-soundbee-a3-pairing"
+      ],
+      "expectedAnswerPoints": "售后走维修，配对键按2秒；两项结论分别有资料来源。"
+    },
+    {
+      "caseId": "EC-03-09",
+      "split": "dev",
+      "model": "SoundBee-A3",
+      "group": "无答案",
+      "kind": "unanswerable",
+      "question": "SoundBee-A3 支持哪些蓝牙编码格式，是否支持LDAC？",
+      "expectedStatus": "INSUFFICIENT_EVIDENCE",
+      "expectedSourceIds": [],
+      "expectedAnswerPoints": "未提供蓝牙编码信息，不能编造SBC、AAC或LDAC参数。"
+    },
+    {
+      "caseId": "EC-03-10",
+      "split": "dev",
+      "model": "SoundBee-A3",
+      "group": "无答案",
+      "kind": "unanswerable",
+      "question": "SoundBee-A3 已经超过365天保修期，维修需要支付多少钱？",
+      "expectedStatus": "INSUFFICIENT_EVIDENCE",
+      "expectedSourceIds": [],
+      "expectedAnswerPoints": "没有过保维修价格，不得编造金额或免费承诺。"
+    },
+    {
+      "caseId": "EC-04-01",
+      "split": "dev",
+      "model": "SoundBee-A3-Pro",
+      "group": "条件边界",
+      "kind": "retrieval",
+      "question": "SoundBee-A3-Pro 签收恰好14天，商品没有拆封、配件齐全，能申请无理由退货吗？",
+      "expectedStatus": "ANSWERED",
+      "expectedSourceIds": [
+        "expanded-v1-soundbee-a3-pro-return"
+      ],
+      "expectedAnswerPoints": "处于包含边界的退货期限，按假设条件可申请；不能声称已审核订单。"
+    },
+    {
+      "caseId": "EC-04-02",
+      "split": "dev",
+      "model": "SoundBee-A3-Pro",
+      "group": "条件边界",
+      "kind": "retrieval",
+      "question": "SoundBee-A3-Pro 签收第45天，确认有质量问题，应该申请换货还是维修？",
+      "expectedStatus": "ANSWERED",
+      "expectedSourceIds": [
+        "expanded-v1-soundbee-a3-pro-quality"
+      ],
+      "expectedAnswerPoints": "含第45天，可申请换货。"
+    },
+    {
+      "caseId": "EC-04-03",
+      "split": "dev",
+      "model": "SoundBee-A3-Pro",
+      "group": "长尾",
+      "kind": "retrieval",
+      "question": "买的SoundBee-A3-Pro到手46天了，还在540天保修内，毛病已经确认为质量问题，该走哪种售后？",
+      "expectedStatus": "ANSWERED",
+      "expectedSourceIds": [
+        "expanded-v1-soundbee-a3-pro-quality"
+      ],
+      "expectedAnswerPoints": "超过换货期限且仍在保修期内，走维修；不能承诺免费。"
+    },
+    {
+      "caseId": "EC-04-04",
+      "split": "dev",
+      "model": "SoundBee-A3-Pro",
+      "group": "FAQ",
+      "kind": "retrieval",
+      "question": "SoundBee-A3-Pro 首次连接手机，盒上的配对键要按几秒，之后去哪里选耳机？",
+      "expectedStatus": "ANSWERED",
+      "expectedSourceIds": [
+        "expanded-v1-soundbee-a3-pro-pairing"
+      ],
+      "expectedAnswerPoints": "按4秒至蓝白闪烁，在蓝牙列表选择本型号。"
+    },
+    {
+      "caseId": "EC-04-05",
+      "split": "dev",
+      "model": "SoundBee-A3-Pro",
+      "group": "长尾",
+      "kind": "retrieval",
+      "question": "我的SoundBee-A3-Pro充电盒用哪种接口，怎么从灯的颜色看出电已充满？",
+      "expectedStatus": "ANSWERED",
+      "expectedSourceIds": [
+        "expanded-v1-soundbee-a3-pro-charging"
+      ],
+      "expectedAnswerPoints": "接口USB-C，充满为白色常亮。"
+    },
+    {
+      "caseId": "EC-04-06",
+      "split": "dev",
+      "model": "SoundBee-A3-Pro",
+      "group": "FAQ",
+      "kind": "retrieval",
+      "question": "SoundBee-A3-Pro 的运单已经揽收，但超过24小时没有新轨迹，先核对什么再找谁？",
+      "expectedStatus": "ANSWERED",
+      "expectedSourceIds": [
+        "expanded-v1-soundbee-a3-pro-logistics"
+      ],
+      "expectedAnswerPoints": "先核对运单号和发货时间，联系承运商，无法定位则人工客服；不声称已查订单。"
+    },
+    {
+      "caseId": "EC-04-07",
+      "split": "dev",
+      "model": "SoundBee-A3-Pro",
+      "group": "长尾",
+      "kind": "retrieval",
+      "question": "买SoundBee-A3-Pro的电子发票申请入口在哪，演示处理需要几个工作日，开出来去哪下载？",
+      "expectedStatus": "ANSWERED",
+      "expectedSourceIds": [
+        "expanded-v1-soundbee-a3-pro-invoice"
+      ],
+      "expectedAnswerPoints": "订单详情申请，3个工作日，在发票记录下载。"
+    },
+    {
+      "caseId": "EC-04-08",
+      "split": "dev",
+      "model": "SoundBee-A3-Pro",
+      "group": "多来源",
+      "kind": "retrieval",
+      "question": "SoundBee-A3-Pro 签收46天、确认质量问题且仍在保修期内，该走哪种售后？同时首次配对键要按多久？",
+      "expectedStatus": "ANSWERED",
+      "expectedSourceIds": [
+        "expanded-v1-soundbee-a3-pro-quality",
+        "expanded-v1-soundbee-a3-pro-pairing"
+      ],
+      "expectedAnswerPoints": "售后走维修，配对键按4秒；两项结论分别有资料来源。"
+    },
+    {
+      "caseId": "EC-04-09",
+      "split": "dev",
+      "model": "SoundBee-A3-Pro",
+      "group": "无答案",
+      "kind": "unanswerable",
+      "question": "SoundBee-A3-Pro 支持哪些蓝牙编码格式，是否支持LDAC？",
+      "expectedStatus": "INSUFFICIENT_EVIDENCE",
+      "expectedSourceIds": [],
+      "expectedAnswerPoints": "未提供蓝牙编码信息，不能编造SBC、AAC或LDAC参数。"
+    },
+    {
+      "caseId": "EC-04-10",
+      "split": "dev",
+      "model": "SoundBee-A3-Pro",
+      "group": "无答案",
+      "kind": "unanswerable",
+      "question": "SoundBee-A3-Pro 已经超过540天保修期，维修需要支付多少钱？",
+      "expectedStatus": "INSUFFICIENT_EVIDENCE",
+      "expectedSourceIds": [],
+      "expectedAnswerPoints": "没有过保维修价格，不得编造金额或免费承诺。"
+    },
+    {
+      "caseId": "EC-05-01",
+      "split": "dev",
+      "model": "SoundBee-B1",
+      "group": "条件边界",
+      "kind": "retrieval",
+      "question": "SoundBee-B1 签收恰好7天，商品没有拆封、配件齐全，能申请无理由退货吗？",
+      "expectedStatus": "ANSWERED",
+      "expectedSourceIds": [
+        "expanded-v1-soundbee-b1-return"
+      ],
+      "expectedAnswerPoints": "处于包含边界的退货期限，按假设条件可申请；不能声称已审核订单。"
+    },
+    {
+      "caseId": "EC-05-02",
+      "split": "dev",
+      "model": "SoundBee-B1",
+      "group": "条件边界",
+      "kind": "retrieval",
+      "question": "SoundBee-B1 签收第30天，确认有质量问题，应该申请换货还是维修？",
+      "expectedStatus": "ANSWERED",
+      "expectedSourceIds": [
+        "expanded-v1-soundbee-b1-quality"
+      ],
+      "expectedAnswerPoints": "含第30天，可申请换货。"
+    },
+    {
+      "caseId": "EC-05-03",
+      "split": "dev",
+      "model": "SoundBee-B1",
+      "group": "长尾",
+      "kind": "retrieval",
+      "question": "买的SoundBee-B1到手31天了，还在180天保修内，毛病已经确认为质量问题，该走哪种售后？",
+      "expectedStatus": "ANSWERED",
+      "expectedSourceIds": [
+        "expanded-v1-soundbee-b1-quality"
+      ],
+      "expectedAnswerPoints": "超过换货期限且仍在保修期内，走维修；不能承诺免费。"
+    },
+    {
+      "caseId": "EC-05-04",
+      "split": "dev",
+      "model": "SoundBee-B1",
+      "group": "FAQ",
+      "kind": "retrieval",
+      "question": "SoundBee-B1 首次连接手机，盒上的配对键要按几秒，之后去哪里选耳机？",
+      "expectedStatus": "ANSWERED",
+      "expectedSourceIds": [
+        "expanded-v1-soundbee-b1-pairing"
+      ],
+      "expectedAnswerPoints": "按3秒至蓝白闪烁，在蓝牙列表选择本型号。"
+    },
+    {
+      "caseId": "EC-05-05",
+      "split": "dev",
+      "model": "SoundBee-B1",
+      "group": "长尾",
+      "kind": "retrieval",
+      "question": "我的SoundBee-B1充电盒用哪种接口，怎么从灯的颜色看出电已充满？",
+      "expectedStatus": "ANSWERED",
+      "expectedSourceIds": [
+        "expanded-v1-soundbee-b1-charging"
+      ],
+      "expectedAnswerPoints": "接口Micro-USB，充满为绿色常亮。"
+    },
+    {
+      "caseId": "EC-05-06",
+      "split": "dev",
+      "model": "SoundBee-B1",
+      "group": "FAQ",
+      "kind": "retrieval",
+      "question": "SoundBee-B1 的运单已经揽收，但超过72小时没有新轨迹，先核对什么再找谁？",
+      "expectedStatus": "ANSWERED",
+      "expectedSourceIds": [
+        "expanded-v1-soundbee-b1-logistics"
+      ],
+      "expectedAnswerPoints": "先核对运单号和发货时间，联系承运商，无法定位则人工客服；不声称已查订单。"
+    },
+    {
+      "caseId": "EC-05-07",
+      "split": "dev",
+      "model": "SoundBee-B1",
+      "group": "长尾",
+      "kind": "retrieval",
+      "question": "买SoundBee-B1的电子发票申请入口在哪，演示处理需要几个工作日，开出来去哪下载？",
+      "expectedStatus": "ANSWERED",
+      "expectedSourceIds": [
+        "expanded-v1-soundbee-b1-invoice"
+      ],
+      "expectedAnswerPoints": "订单详情申请，2个工作日，在发票记录下载。"
+    },
+    {
+      "caseId": "EC-05-08",
+      "split": "dev",
+      "model": "SoundBee-B1",
+      "group": "多来源",
+      "kind": "retrieval",
+      "question": "SoundBee-B1 签收31天、确认质量问题且仍在保修期内，该走哪种售后？同时首次配对键要按多久？",
+      "expectedStatus": "ANSWERED",
+      "expectedSourceIds": [
+        "expanded-v1-soundbee-b1-quality",
+        "expanded-v1-soundbee-b1-pairing"
+      ],
+      "expectedAnswerPoints": "售后走维修，配对键按3秒；两项结论分别有资料来源。"
+    },
+    {
+      "caseId": "EC-05-09",
+      "split": "dev",
+      "model": "SoundBee-B1",
+      "group": "无答案",
+      "kind": "unanswerable",
+      "question": "SoundBee-B1 支持哪些蓝牙编码格式，是否支持LDAC？",
+      "expectedStatus": "INSUFFICIENT_EVIDENCE",
+      "expectedSourceIds": [],
+      "expectedAnswerPoints": "未提供蓝牙编码信息，不能编造SBC、AAC或LDAC参数。"
+    },
+    {
+      "caseId": "EC-05-10",
+      "split": "dev",
+      "model": "SoundBee-B1",
+      "group": "无答案",
+      "kind": "unanswerable",
+      "question": "SoundBee-B1 已经超过180天保修期，维修需要支付多少钱？",
+      "expectedStatus": "INSUFFICIENT_EVIDENCE",
+      "expectedSourceIds": [],
+      "expectedAnswerPoints": "没有过保维修价格，不得编造金额或免费承诺。"
+    },
+    {
+      "caseId": "EC-06-01",
+      "split": "dev",
+      "model": "SoundBee-B1-Plus",
+      "group": "条件边界",
+      "kind": "retrieval",
+      "question": "SoundBee-B1-Plus 签收恰好10天，商品没有拆封、配件齐全，能申请无理由退货吗？",
+      "expectedStatus": "ANSWERED",
+      "expectedSourceIds": [
+        "expanded-v1-soundbee-b1-plus-return"
+      ],
+      "expectedAnswerPoints": "处于包含边界的退货期限，按假设条件可申请；不能声称已审核订单。"
+    },
+    {
+      "caseId": "EC-06-02",
+      "split": "dev",
+      "model": "SoundBee-B1-Plus",
+      "group": "条件边界",
+      "kind": "retrieval",
+      "question": "SoundBee-B1-Plus 签收第45天，确认有质量问题，应该申请换货还是维修？",
+      "expectedStatus": "ANSWERED",
+      "expectedSourceIds": [
+        "expanded-v1-soundbee-b1-plus-quality"
+      ],
+      "expectedAnswerPoints": "含第45天，可申请换货。"
+    },
+    {
+      "caseId": "EC-06-03",
+      "split": "dev",
+      "model": "SoundBee-B1-Plus",
+      "group": "长尾",
+      "kind": "retrieval",
+      "question": "买的SoundBee-B1-Plus到手46天了，还在365天保修内，毛病已经确认为质量问题，该走哪种售后？",
+      "expectedStatus": "ANSWERED",
+      "expectedSourceIds": [
+        "expanded-v1-soundbee-b1-plus-quality"
+      ],
+      "expectedAnswerPoints": "超过换货期限且仍在保修期内，走维修；不能承诺免费。"
+    },
+    {
+      "caseId": "EC-06-04",
+      "split": "dev",
+      "model": "SoundBee-B1-Plus",
+      "group": "FAQ",
+      "kind": "retrieval",
+      "question": "SoundBee-B1-Plus 首次连接手机，盒上的配对键要按几秒，之后去哪里选耳机？",
+      "expectedStatus": "ANSWERED",
+      "expectedSourceIds": [
+        "expanded-v1-soundbee-b1-plus-pairing"
+      ],
+      "expectedAnswerPoints": "按6秒至蓝白闪烁，在蓝牙列表选择本型号。"
+    },
+    {
+      "caseId": "EC-06-05",
+      "split": "dev",
+      "model": "SoundBee-B1-Plus",
+      "group": "长尾",
+      "kind": "retrieval",
+      "question": "我的SoundBee-B1-Plus充电盒用哪种接口，怎么从灯的颜色看出电已充满？",
+      "expectedStatus": "ANSWERED",
+      "expectedSourceIds": [
+        "expanded-v1-soundbee-b1-plus-charging"
+      ],
+      "expectedAnswerPoints": "接口USB-C，充满为白色常亮。"
+    },
+    {
+      "caseId": "EC-06-06",
+      "split": "dev",
+      "model": "SoundBee-B1-Plus",
+      "group": "FAQ",
+      "kind": "retrieval",
+      "question": "SoundBee-B1-Plus 的运单已经揽收，但超过36小时没有新轨迹，先核对什么再找谁？",
+      "expectedStatus": "ANSWERED",
+      "expectedSourceIds": [
+        "expanded-v1-soundbee-b1-plus-logistics"
+      ],
+      "expectedAnswerPoints": "先核对运单号和发货时间，联系承运商，无法定位则人工客服；不声称已查订单。"
+    },
+    {
+      "caseId": "EC-06-07",
+      "split": "dev",
+      "model": "SoundBee-B1-Plus",
+      "group": "长尾",
+      "kind": "retrieval",
+      "question": "买SoundBee-B1-Plus的电子发票申请入口在哪，演示处理需要几个工作日，开出来去哪下载？",
+      "expectedStatus": "ANSWERED",
+      "expectedSourceIds": [
+        "expanded-v1-soundbee-b1-plus-invoice"
+      ],
+      "expectedAnswerPoints": "订单详情申请，1个工作日，在发票记录下载。"
+    },
+    {
+      "caseId": "EC-06-08",
+      "split": "dev",
+      "model": "SoundBee-B1-Plus",
+      "group": "多来源",
+      "kind": "retrieval",
+      "question": "SoundBee-B1-Plus 签收46天、确认质量问题且仍在保修期内，该走哪种售后？同时首次配对键要按多久？",
+      "expectedStatus": "ANSWERED",
+      "expectedSourceIds": [
+        "expanded-v1-soundbee-b1-plus-quality",
+        "expanded-v1-soundbee-b1-plus-pairing"
+      ],
+      "expectedAnswerPoints": "售后走维修，配对键按6秒；两项结论分别有资料来源。"
+    },
+    {
+      "caseId": "EC-06-09",
+      "split": "dev",
+      "model": "SoundBee-B1-Plus",
+      "group": "无答案",
+      "kind": "unanswerable",
+      "question": "SoundBee-B1-Plus 支持哪些蓝牙编码格式，是否支持LDAC？",
+      "expectedStatus": "INSUFFICIENT_EVIDENCE",
+      "expectedSourceIds": [],
+      "expectedAnswerPoints": "未提供蓝牙编码信息，不能编造SBC、AAC或LDAC参数。"
+    },
+    {
+      "caseId": "EC-06-10",
+      "split": "dev",
+      "model": "SoundBee-B1-Plus",
+      "group": "无答案",
+      "kind": "unanswerable",
+      "question": "SoundBee-B1-Plus 已经超过365天保修期，维修需要支付多少钱？",
+      "expectedStatus": "INSUFFICIENT_EVIDENCE",
+      "expectedSourceIds": [],
+      "expectedAnswerPoints": "没有过保维修价格，不得编造金额或免费承诺。"
+    },
+    {
+      "caseId": "EC-07-01",
+      "split": "dev",
+      "model": "SoundBee-B2",
+      "group": "条件边界",
+      "kind": "retrieval",
+      "question": "SoundBee-B2 签收恰好14天，商品没有拆封、配件齐全，能申请无理由退货吗？",
+      "expectedStatus": "ANSWERED",
+      "expectedSourceIds": [
+        "expanded-v1-soundbee-b2-return"
+      ],
+      "expectedAnswerPoints": "处于包含边界的退货期限，按假设条件可申请；不能声称已审核订单。"
+    },
+    {
+      "caseId": "EC-07-02",
+      "split": "dev",
+      "model": "SoundBee-B2",
+      "group": "条件边界",
+      "kind": "retrieval",
+      "question": "SoundBee-B2 签收第60天，确认有质量问题，应该申请换货还是维修？",
+      "expectedStatus": "ANSWERED",
+      "expectedSourceIds": [
+        "expanded-v1-soundbee-b2-quality"
+      ],
+      "expectedAnswerPoints": "含第60天，可申请换货。"
+    },
+    {
+      "caseId": "EC-07-03",
+      "split": "dev",
+      "model": "SoundBee-B2",
+      "group": "长尾",
+      "kind": "retrieval",
+      "question": "买的SoundBee-B2到手61天了，还在540天保修内，毛病已经确认为质量问题，该走哪种售后？",
+      "expectedStatus": "ANSWERED",
+      "expectedSourceIds": [
+        "expanded-v1-soundbee-b2-quality"
+      ],
+      "expectedAnswerPoints": "超过换货期限且仍在保修期内，走维修；不能承诺免费。"
+    },
+    {
+      "caseId": "EC-07-04",
+      "split": "dev",
+      "model": "SoundBee-B2",
+      "group": "FAQ",
+      "kind": "retrieval",
+      "question": "SoundBee-B2 首次连接手机，盒上的配对键要按几秒，之后去哪里选耳机？",
+      "expectedStatus": "ANSWERED",
+      "expectedSourceIds": [
+        "expanded-v1-soundbee-b2-pairing"
+      ],
+      "expectedAnswerPoints": "按4秒至蓝白闪烁，在蓝牙列表选择本型号。"
+    },
+    {
+      "caseId": "EC-07-05",
+      "split": "dev",
+      "model": "SoundBee-B2",
+      "group": "长尾",
+      "kind": "retrieval",
+      "question": "我的SoundBee-B2充电盒用哪种接口，怎么从灯的颜色看出电已充满？",
+      "expectedStatus": "ANSWERED",
+      "expectedSourceIds": [
+        "expanded-v1-soundbee-b2-charging"
+      ],
+      "expectedAnswerPoints": "接口USB-C，充满为绿色常亮。"
+    },
+    {
+      "caseId": "EC-07-06",
+      "split": "dev",
+      "model": "SoundBee-B2",
+      "group": "FAQ",
+      "kind": "retrieval",
+      "question": "SoundBee-B2 的运单已经揽收，但超过48小时没有新轨迹，先核对什么再找谁？",
+      "expectedStatus": "ANSWERED",
+      "expectedSourceIds": [
+        "expanded-v1-soundbee-b2-logistics"
+      ],
+      "expectedAnswerPoints": "先核对运单号和发货时间，联系承运商，无法定位则人工客服；不声称已查订单。"
+    },
+    {
+      "caseId": "EC-07-07",
+      "split": "dev",
+      "model": "SoundBee-B2",
+      "group": "长尾",
+      "kind": "retrieval",
+      "question": "买SoundBee-B2的电子发票申请入口在哪，演示处理需要几个工作日，开出来去哪下载？",
+      "expectedStatus": "ANSWERED",
+      "expectedSourceIds": [
+        "expanded-v1-soundbee-b2-invoice"
+      ],
+      "expectedAnswerPoints": "订单详情申请，3个工作日，在发票记录下载。"
+    },
+    {
+      "caseId": "EC-07-08",
+      "split": "dev",
+      "model": "SoundBee-B2",
+      "group": "多来源",
+      "kind": "retrieval",
+      "question": "SoundBee-B2 签收61天、确认质量问题且仍在保修期内，该走哪种售后？同时首次配对键要按多久？",
+      "expectedStatus": "ANSWERED",
+      "expectedSourceIds": [
+        "expanded-v1-soundbee-b2-quality",
+        "expanded-v1-soundbee-b2-pairing"
+      ],
+      "expectedAnswerPoints": "售后走维修，配对键按4秒；两项结论分别有资料来源。"
+    },
+    {
+      "caseId": "EC-07-09",
+      "split": "dev",
+      "model": "SoundBee-B2",
+      "group": "无答案",
+      "kind": "unanswerable",
+      "question": "SoundBee-B2 支持哪些蓝牙编码格式，是否支持LDAC？",
+      "expectedStatus": "INSUFFICIENT_EVIDENCE",
+      "expectedSourceIds": [],
+      "expectedAnswerPoints": "未提供蓝牙编码信息，不能编造SBC、AAC或LDAC参数。"
+    },
+    {
+      "caseId": "EC-07-10",
+      "split": "dev",
+      "model": "SoundBee-B2",
+      "group": "无答案",
+      "kind": "unanswerable",
+      "question": "SoundBee-B2 已经超过540天保修期，维修需要支付多少钱？",
+      "expectedStatus": "INSUFFICIENT_EVIDENCE",
+      "expectedSourceIds": [],
+      "expectedAnswerPoints": "没有过保维修价格，不得编造金额或免费承诺。"
+    },
+    {
+      "caseId": "EC-08-01",
+      "split": "validation",
+      "model": "SoundBee-B2-Max",
+      "group": "条件边界",
+      "kind": "retrieval",
+      "question": "请仅根据SoundBee-B2-Max的规则判断：收货15天，封条完好、配件无缺，是否仍能无理由退货？",
+      "expectedStatus": "ANSWERED",
+      "expectedSourceIds": [
+        "expanded-v1-soundbee-b2-max-return"
+      ],
+      "expectedAnswerPoints": "处于包含边界的退货期限，按假设条件可申请；不能声称已审核订单。"
+    },
+    {
+      "caseId": "EC-08-02",
+      "split": "validation",
+      "model": "SoundBee-B2-Max",
+      "group": "条件边界",
+      "kind": "retrieval",
+      "question": "SoundBee-B2-Max 签收第60天，确认有质量问题，应该申请换货还是维修？",
+      "expectedStatus": "ANSWERED",
+      "expectedSourceIds": [
+        "expanded-v1-soundbee-b2-max-quality"
+      ],
+      "expectedAnswerPoints": "含第60天，可申请换货。"
+    },
+    {
+      "caseId": "EC-08-03",
+      "split": "validation",
+      "model": "SoundBee-B2-Max",
+      "group": "长尾",
+      "kind": "retrieval",
+      "question": "买的SoundBee-B2-Max到手61天了，还在730天保修内，毛病已经确认为质量问题，该走哪种售后？",
+      "expectedStatus": "ANSWERED",
+      "expectedSourceIds": [
+        "expanded-v1-soundbee-b2-max-quality"
+      ],
+      "expectedAnswerPoints": "超过换货期限且仍在保修期内，走维修；不能承诺免费。"
+    },
+    {
+      "caseId": "EC-08-04",
+      "split": "validation",
+      "model": "SoundBee-B2-Max",
+      "group": "FAQ",
+      "kind": "retrieval",
+      "question": "SoundBee-B2-Max 第一次用，听说要从充电盒进入配对状态。需要长按几秒，手机端接着做什么？",
+      "expectedStatus": "ANSWERED",
+      "expectedSourceIds": [
+        "expanded-v1-soundbee-b2-max-pairing"
+      ],
+      "expectedAnswerPoints": "按8秒至蓝白闪烁，在蓝牙列表选择本型号。"
+    },
+    {
+      "caseId": "EC-08-05",
+      "split": "validation",
+      "model": "SoundBee-B2-Max",
+      "group": "长尾",
+      "kind": "retrieval",
+      "question": "想给SoundBee-B2-Max的盒子补电，请指出接口类型和充满时指示灯的表现。",
+      "expectedStatus": "ANSWERED",
+      "expectedSourceIds": [
+        "expanded-v1-soundbee-b2-max-charging"
+      ],
+      "expectedAnswerPoints": "接口USB-C，充满为白色常亮。"
+    },
+    {
+      "caseId": "EC-08-06",
+      "split": "validation",
+      "model": "SoundBee-B2-Max",
+      "group": "FAQ",
+      "kind": "retrieval",
+      "question": "SoundBee-B2-Max 的运单已经揽收，但超过72小时没有新轨迹，先核对什么再找谁？",
+      "expectedStatus": "ANSWERED",
+      "expectedSourceIds": [
+        "expanded-v1-soundbee-b2-max-logistics"
+      ],
+      "expectedAnswerPoints": "先核对运单号和发货时间，联系承运商，无法定位则人工客服；不声称已查订单。"
+    },
+    {
+      "caseId": "EC-08-07",
+      "split": "validation",
+      "model": "SoundBee-B2-Max",
+      "group": "长尾",
+      "kind": "retrieval",
+      "question": "买SoundBee-B2-Max的电子发票申请入口在哪，演示处理需要几个工作日，开出来去哪下载？",
+      "expectedStatus": "ANSWERED",
+      "expectedSourceIds": [
+        "expanded-v1-soundbee-b2-max-invoice"
+      ],
+      "expectedAnswerPoints": "订单详情申请，2个工作日，在发票记录下载。"
+    },
+    {
+      "caseId": "EC-08-08",
+      "split": "validation",
+      "model": "SoundBee-B2-Max",
+      "group": "多来源",
+      "kind": "retrieval",
+      "question": "请分别回答SoundBee-B2-Max两个问题：确认质量故障且签收61天仍在保修内时的处理方式；首次连接手机时配对键的长按时长。",
+      "expectedStatus": "ANSWERED",
+      "expectedSourceIds": [
+        "expanded-v1-soundbee-b2-max-quality",
+        "expanded-v1-soundbee-b2-max-pairing"
+      ],
+      "expectedAnswerPoints": "售后走维修，配对键按8秒；两项结论分别有资料来源。"
+    },
+    {
+      "caseId": "EC-08-09",
+      "split": "validation",
+      "model": "SoundBee-B2-Max",
+      "group": "无答案",
+      "kind": "unanswerable",
+      "question": "SoundBee-B2-Max 支持哪些蓝牙编码格式，是否支持LDAC？",
+      "expectedStatus": "INSUFFICIENT_EVIDENCE",
+      "expectedSourceIds": [],
+      "expectedAnswerPoints": "未提供蓝牙编码信息，不能编造SBC、AAC或LDAC参数。"
+    },
+    {
+      "caseId": "EC-08-10",
+      "split": "validation",
+      "model": "SoundBee-B2-Max",
+      "group": "无答案",
+      "kind": "unanswerable",
+      "question": "SoundBee-B2-Max 已经超过730天保修期，维修需要支付多少钱？",
+      "expectedStatus": "INSUFFICIENT_EVIDENCE",
+      "expectedSourceIds": [],
+      "expectedAnswerPoints": "没有过保维修价格，不得编造金额或免费承诺。"
+    },
+    {
+      "caseId": "EC-09-01",
+      "split": "validation",
+      "model": "SoundBee-C1",
+      "group": "条件边界",
+      "kind": "retrieval",
+      "question": "请仅根据SoundBee-C1的规则判断：收货7天，封条完好、配件无缺，是否仍能无理由退货？",
+      "expectedStatus": "ANSWERED",
+      "expectedSourceIds": [
+        "expanded-v1-soundbee-c1-return"
+      ],
+      "expectedAnswerPoints": "处于包含边界的退货期限，按假设条件可申请；不能声称已审核订单。"
+    },
+    {
+      "caseId": "EC-09-02",
+      "split": "validation",
+      "model": "SoundBee-C1",
+      "group": "条件边界",
+      "kind": "retrieval",
+      "question": "SoundBee-C1 签收第15天，确认有质量问题，应该申请换货还是维修？",
+      "expectedStatus": "ANSWERED",
+      "expectedSourceIds": [
+        "expanded-v1-soundbee-c1-quality"
+      ],
+      "expectedAnswerPoints": "含第15天，可申请换货。"
+    },
+    {
+      "caseId": "EC-09-03",
+      "split": "validation",
+      "model": "SoundBee-C1",
+      "group": "长尾",
+      "kind": "retrieval",
+      "question": "买的SoundBee-C1到手16天了，还在365天保修内，毛病已经确认为质量问题，该走哪种售后？",
+      "expectedStatus": "ANSWERED",
+      "expectedSourceIds": [
+        "expanded-v1-soundbee-c1-quality"
+      ],
+      "expectedAnswerPoints": "超过换货期限且仍在保修期内，走维修；不能承诺免费。"
+    },
+    {
+      "caseId": "EC-09-04",
+      "split": "validation",
+      "model": "SoundBee-C1",
+      "group": "FAQ",
+      "kind": "retrieval",
+      "question": "SoundBee-C1 第一次用，听说要从充电盒进入配对状态。需要长按几秒，手机端接着做什么？",
+      "expectedStatus": "ANSWERED",
+      "expectedSourceIds": [
+        "expanded-v1-soundbee-c1-pairing"
+      ],
+      "expectedAnswerPoints": "按2秒至蓝白闪烁，在蓝牙列表选择本型号。"
+    },
+    {
+      "caseId": "EC-09-05",
+      "split": "validation",
+      "model": "SoundBee-C1",
+      "group": "长尾",
+      "kind": "retrieval",
+      "question": "想给SoundBee-C1的盒子补电，请指出接口类型和充满时指示灯的表现。",
+      "expectedStatus": "ANSWERED",
+      "expectedSourceIds": [
+        "expanded-v1-soundbee-c1-charging"
+      ],
+      "expectedAnswerPoints": "接口磁吸充电接口，充满为绿色常亮。"
+    },
+    {
+      "caseId": "EC-09-06",
+      "split": "validation",
+      "model": "SoundBee-C1",
+      "group": "FAQ",
+      "kind": "retrieval",
+      "question": "SoundBee-C1 的运单已经揽收，但超过24小时没有新轨迹，先核对什么再找谁？",
+      "expectedStatus": "ANSWERED",
+      "expectedSourceIds": [
+        "expanded-v1-soundbee-c1-logistics"
+      ],
+      "expectedAnswerPoints": "先核对运单号和发货时间，联系承运商，无法定位则人工客服；不声称已查订单。"
+    },
+    {
+      "caseId": "EC-09-07",
+      "split": "validation",
+      "model": "SoundBee-C1",
+      "group": "长尾",
+      "kind": "retrieval",
+      "question": "买SoundBee-C1的电子发票申请入口在哪，演示处理需要几个工作日，开出来去哪下载？",
+      "expectedStatus": "ANSWERED",
+      "expectedSourceIds": [
+        "expanded-v1-soundbee-c1-invoice"
+      ],
+      "expectedAnswerPoints": "订单详情申请，1个工作日，在发票记录下载。"
+    },
+    {
+      "caseId": "EC-09-08",
+      "split": "validation",
+      "model": "SoundBee-C1",
+      "group": "多来源",
+      "kind": "retrieval",
+      "question": "请分别回答SoundBee-C1两个问题：确认质量故障且签收16天仍在保修内时的处理方式；首次连接手机时配对键的长按时长。",
+      "expectedStatus": "ANSWERED",
+      "expectedSourceIds": [
+        "expanded-v1-soundbee-c1-quality",
+        "expanded-v1-soundbee-c1-pairing"
+      ],
+      "expectedAnswerPoints": "售后走维修，配对键按2秒；两项结论分别有资料来源。"
+    },
+    {
+      "caseId": "EC-09-09",
+      "split": "validation",
+      "model": "SoundBee-C1",
+      "group": "无答案",
+      "kind": "unanswerable",
+      "question": "SoundBee-C1 支持哪些蓝牙编码格式，是否支持LDAC？",
+      "expectedStatus": "INSUFFICIENT_EVIDENCE",
+      "expectedSourceIds": [],
+      "expectedAnswerPoints": "未提供蓝牙编码信息，不能编造SBC、AAC或LDAC参数。"
+    },
+    {
+      "caseId": "EC-09-10",
+      "split": "validation",
+      "model": "SoundBee-C1",
+      "group": "无答案",
+      "kind": "unanswerable",
+      "question": "SoundBee-C1 已经超过365天保修期，维修需要支付多少钱？",
+      "expectedStatus": "INSUFFICIENT_EVIDENCE",
+      "expectedSourceIds": [],
+      "expectedAnswerPoints": "没有过保维修价格，不得编造金额或免费承诺。"
+    },
+    {
+      "caseId": "EC-10-01",
+      "split": "validation",
+      "model": "SoundBee-C1-Pro",
+      "group": "条件边界",
+      "kind": "retrieval",
+      "question": "请仅根据SoundBee-C1-Pro的规则判断：收货14天，封条完好、配件无缺，是否仍能无理由退货？",
+      "expectedStatus": "ANSWERED",
+      "expectedSourceIds": [
+        "expanded-v1-soundbee-c1-pro-return"
+      ],
+      "expectedAnswerPoints": "处于包含边界的退货期限，按假设条件可申请；不能声称已审核订单。"
+    },
+    {
+      "caseId": "EC-10-02",
+      "split": "validation",
+      "model": "SoundBee-C1-Pro",
+      "group": "条件边界",
+      "kind": "retrieval",
+      "question": "SoundBee-C1-Pro 签收第30天，确认有质量问题，应该申请换货还是维修？",
+      "expectedStatus": "ANSWERED",
+      "expectedSourceIds": [
+        "expanded-v1-soundbee-c1-pro-quality"
+      ],
+      "expectedAnswerPoints": "含第30天，可申请换货。"
+    },
+    {
+      "caseId": "EC-10-03",
+      "split": "validation",
+      "model": "SoundBee-C1-Pro",
+      "group": "长尾",
+      "kind": "retrieval",
+      "question": "买的SoundBee-C1-Pro到手31天了，还在730天保修内，毛病已经确认为质量问题，该走哪种售后？",
+      "expectedStatus": "ANSWERED",
+      "expectedSourceIds": [
+        "expanded-v1-soundbee-c1-pro-quality"
+      ],
+      "expectedAnswerPoints": "超过换货期限且仍在保修期内，走维修；不能承诺免费。"
+    },
+    {
+      "caseId": "EC-10-04",
+      "split": "validation",
+      "model": "SoundBee-C1-Pro",
+      "group": "FAQ",
+      "kind": "retrieval",
+      "question": "SoundBee-C1-Pro 第一次用，听说要从充电盒进入配对状态。需要长按几秒，手机端接着做什么？",
+      "expectedStatus": "ANSWERED",
+      "expectedSourceIds": [
+        "expanded-v1-soundbee-c1-pro-pairing"
+      ],
+      "expectedAnswerPoints": "按7秒至蓝白闪烁，在蓝牙列表选择本型号。"
+    },
+    {
+      "caseId": "EC-10-05",
+      "split": "validation",
+      "model": "SoundBee-C1-Pro",
+      "group": "长尾",
+      "kind": "retrieval",
+      "question": "想给SoundBee-C1-Pro的盒子补电，请指出接口类型和充满时指示灯的表现。",
+      "expectedStatus": "ANSWERED",
+      "expectedSourceIds": [
+        "expanded-v1-soundbee-c1-pro-charging"
+      ],
+      "expectedAnswerPoints": "接口USB-C，充满为白色常亮。"
+    },
+    {
+      "caseId": "EC-10-06",
+      "split": "validation",
+      "model": "SoundBee-C1-Pro",
+      "group": "FAQ",
+      "kind": "retrieval",
+      "question": "SoundBee-C1-Pro 的运单已经揽收，但超过48小时没有新轨迹，先核对什么再找谁？",
+      "expectedStatus": "ANSWERED",
+      "expectedSourceIds": [
+        "expanded-v1-soundbee-c1-pro-logistics"
+      ],
+      "expectedAnswerPoints": "先核对运单号和发货时间，联系承运商，无法定位则人工客服；不声称已查订单。"
+    },
+    {
+      "caseId": "EC-10-07",
+      "split": "validation",
+      "model": "SoundBee-C1-Pro",
+      "group": "长尾",
+      "kind": "retrieval",
+      "question": "买SoundBee-C1-Pro的电子发票申请入口在哪，演示处理需要几个工作日，开出来去哪下载？",
+      "expectedStatus": "ANSWERED",
+      "expectedSourceIds": [
+        "expanded-v1-soundbee-c1-pro-invoice"
+      ],
+      "expectedAnswerPoints": "订单详情申请，3个工作日，在发票记录下载。"
+    },
+    {
+      "caseId": "EC-10-08",
+      "split": "validation",
+      "model": "SoundBee-C1-Pro",
+      "group": "多来源",
+      "kind": "retrieval",
+      "question": "请分别回答SoundBee-C1-Pro两个问题：确认质量故障且签收31天仍在保修内时的处理方式；首次连接手机时配对键的长按时长。",
+      "expectedStatus": "ANSWERED",
+      "expectedSourceIds": [
+        "expanded-v1-soundbee-c1-pro-quality",
+        "expanded-v1-soundbee-c1-pro-pairing"
+      ],
+      "expectedAnswerPoints": "售后走维修，配对键按7秒；两项结论分别有资料来源。"
+    },
+    {
+      "caseId": "EC-10-09",
+      "split": "validation",
+      "model": "SoundBee-C1-Pro",
+      "group": "无答案",
+      "kind": "unanswerable",
+      "question": "SoundBee-C1-Pro 支持哪些蓝牙编码格式，是否支持LDAC？",
+      "expectedStatus": "INSUFFICIENT_EVIDENCE",
+      "expectedSourceIds": [],
+      "expectedAnswerPoints": "未提供蓝牙编码信息，不能编造SBC、AAC或LDAC参数。"
+    },
+    {
+      "caseId": "EC-10-10",
+      "split": "validation",
+      "model": "SoundBee-C1-Pro",
+      "group": "无答案",
+      "kind": "unanswerable",
+      "question": "SoundBee-C1-Pro 已经超过730天保修期，维修需要支付多少钱？",
+      "expectedStatus": "INSUFFICIENT_EVIDENCE",
+      "expectedSourceIds": [],
+      "expectedAnswerPoints": "没有过保维修价格，不得编造金额或免费承诺。"
+    }
+  ]
+}

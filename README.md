@@ -4,6 +4,8 @@ CommerceCare 是一个从零搭建的 Java 电商客服学习项目。目标是�
 
 完整路线见 [技术方案与项目路线](技术方案与项目路线.md)。
 
+扩展评测一键入口：在后端启动后执行 `.\scripts\run-expanded-evaluation.ps1`，默认导入 60 份虚构知识并运行开发集三路检索。参数、指标口径和保留验证集说明见 [扩展评测说明](datasets/evaluation/expanded-v1/README.md)。
+
 ## 技术栈
 
 - Java 21、Maven 3.9+、Spring Boot 3.5.16

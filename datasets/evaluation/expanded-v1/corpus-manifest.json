@@ -1,0 +1,489 @@
+{
+  "schemaVersion": 1,
+  "corpusVersion": "commercecare-expanded-v1",
+  "createdDate": "2026-10-08",
+  "description": "10个虚构型号、每型号6份独立资料；原有SoundBee-A1资料保留，规则不被覆盖。",
+  "sourceCount": 60,
+  "sources": [
+    {
+      "sourceId": "expanded-v1-soundbee-a2-return",
+      "title": "SoundBee-A2 演示无理由退货条件",
+      "model": "SoundBee-A2",
+      "topic": "return",
+      "contentPath": "datasets/knowledge/expanded-v1/soundbee-a2-return.md",
+      "sha256": "dfc9cb358c548220a19a969d5b34f44aa7a2eecb46b8eb7441a161d6d0afd496"
+    },
+    {
+      "sourceId": "expanded-v1-soundbee-a2-quality",
+      "title": "SoundBee-A2 演示质量售后期限",
+      "model": "SoundBee-A2",
+      "topic": "quality",
+      "contentPath": "datasets/knowledge/expanded-v1/soundbee-a2-quality.md",
+      "sha256": "a87d3fd68dce26fee9c69e7817fb0b0b6746e392c982ae8ddd2fdd302ba0733e"
+    },
+    {
+      "sourceId": "expanded-v1-soundbee-a2-pairing",
+      "title": "SoundBee-A2 演示蓝牙配对操作",
+      "model": "SoundBee-A2",
+      "topic": "pairing",
+      "contentPath": "datasets/knowledge/expanded-v1/soundbee-a2-pairing.md",
+      "sha256": "943cd26ef9c0e328a5c6eb02abc437655fe46681934ba687af6345b5f9a5051e"
+    },
+    {
+      "sourceId": "expanded-v1-soundbee-a2-charging",
+      "title": "SoundBee-A2 演示充电接口与指示灯",
+      "model": "SoundBee-A2",
+      "topic": "charging",
+      "contentPath": "datasets/knowledge/expanded-v1/soundbee-a2-charging.md",
+      "sha256": "2969ac9b2e0057899a74a8aba9a538a0f8368d65b34f755c75e2223c17f2a5cb"
+    },
+    {
+      "sourceId": "expanded-v1-soundbee-a2-logistics",
+      "title": "SoundBee-A2 演示物流轨迹停滞处理",
+      "model": "SoundBee-A2",
+      "topic": "logistics",
+      "contentPath": "datasets/knowledge/expanded-v1/soundbee-a2-logistics.md",
+      "sha256": "3dc18f0d1a08165456b7cb0c69b67721acc1c37a8ca8b3f6d8e36becf06e4461"
+    },
+    {
+      "sourceId": "expanded-v1-soundbee-a2-invoice",
+      "title": "SoundBee-A2 演示电子发票申请",
+      "model": "SoundBee-A2",
+      "topic": "invoice",
+      "contentPath": "datasets/knowledge/expanded-v1/soundbee-a2-invoice.md",
+      "sha256": "77463ab4893378488965295d4ec03f7e55f6f0f8bbd461eaa58c0f4c33cd507b"
+    },
+    {
+      "sourceId": "expanded-v1-soundbee-a2-plus-return",
+      "title": "SoundBee-A2-Plus 演示无理由退货条件",
+      "model": "SoundBee-A2-Plus",
+      "topic": "return",
+      "contentPath": "datasets/knowledge/expanded-v1/soundbee-a2-plus-return.md",
+      "sha256": "a7ecad6f1fbe3133ff9a387f40ec6e48f15e6f3a9f135996806e6fba2233c94b"
+    },
+    {
+      "sourceId": "expanded-v1-soundbee-a2-plus-quality",
+      "title": "SoundBee-A2-Plus 演示质量售后期限",
+      "model": "SoundBee-A2-Plus",
+      "topic": "quality",
+      "contentPath": "datasets/knowledge/expanded-v1/soundbee-a2-plus-quality.md",
+      "sha256": "8efb2f4f378068aadb38f29d3c33a39250bc3fef206a675124095f914553733a"
+    },
+    {
+      "sourceId": "expanded-v1-soundbee-a2-plus-pairing",
+      "title": "SoundBee-A2-Plus 演示蓝牙配对操作",
+      "model": "SoundBee-A2-Plus",
+      "topic": "pairing",
+      "contentPath": "datasets/knowledge/expanded-v1/soundbee-a2-plus-pairing.md",
+      "sha256": "9d3bba9d35b2fcc9aa8e36c16c7d660947998a15efde21c012f8d4c278c74b96"
+    },
+    {
+      "sourceId": "expanded-v1-soundbee-a2-plus-charging",
+      "title": "SoundBee-A2-Plus 演示充电接口与指示灯",
+      "model": "SoundBee-A2-Plus",
+      "topic": "charging",
+      "contentPath": "datasets/knowledge/expanded-v1/soundbee-a2-plus-charging.md",
+      "sha256": "85e90c265b63383ce335f9410bbc1f47441b7b690e885803722adf21d2bac40b"
+    },
+    {
+      "sourceId": "expanded-v1-soundbee-a2-plus-logistics",
+      "title": "SoundBee-A2-Plus 演示物流轨迹停滞处理",
+      "model": "SoundBee-A2-Plus",
+      "topic": "logistics",
+      "contentPath": "datasets/knowledge/expanded-v1/soundbee-a2-plus-logistics.md",
+      "sha256": "d3bd676cf61789f938679c94bd512a9b0400d639219c5189f7d56810398ac770"
+    },
+    {
+      "sourceId": "expanded-v1-soundbee-a2-plus-invoice",
+      "title": "SoundBee-A2-Plus 演示电子发票申请",
+      "model": "SoundBee-A2-Plus",
+      "topic": "invoice",
+      "contentPath": "datasets/knowledge/expanded-v1/soundbee-a2-plus-invoice.md",
+      "sha256": "1fce3dd5612575d554429764f3208592676040281a35e41f3fe61d2dcedc5372"
+    },
+    {
+      "sourceId": "expanded-v1-soundbee-a3-return",
+      "title": "SoundBee-A3 演示无理由退货条件",
+      "model": "SoundBee-A3",
+      "topic": "return",
+      "contentPath": "datasets/knowledge/expanded-v1/soundbee-a3-return.md",
+      "sha256": "9b3e7d57c387bcdb71fc17b44e60b6d4ac0ce8656c7f3e4e87ed0748fbe0b760"
+    },
+    {
+      "sourceId": "expanded-v1-soundbee-a3-quality",
+      "title": "SoundBee-A3 演示质量售后期限",
+      "model": "SoundBee-A3",
+      "topic": "quality",
+      "contentPath": "datasets/knowledge/expanded-v1/soundbee-a3-quality.md",
+      "sha256": "5dae661ed4b576ef32d67d19dc5bb5e84879e317359ccc14192bcbe74456ad23"
+    },
+    {
+      "sourceId": "expanded-v1-soundbee-a3-pairing",
+      "title": "SoundBee-A3 演示蓝牙配对操作",
+      "model": "SoundBee-A3",
+      "topic": "pairing",
+      "contentPath": "datasets/knowledge/expanded-v1/soundbee-a3-pairing.md",
+      "sha256": "98926b3a158252e89de37426c671241e42173e39c6cbf08f3e28f9d0e1c6725f"
+    },
+    {
+      "sourceId": "expanded-v1-soundbee-a3-charging",
+      "title": "SoundBee-A3 演示充电接口与指示灯",
+      "model": "SoundBee-A3",
+      "topic": "charging",
+      "contentPath": "datasets/knowledge/expanded-v1/soundbee-a3-charging.md",
+      "sha256": "7ce550e48011085ebb6ed02fdd3295ec254e1dde5730bb1f50a2f01c48395746"
+    },
+    {
+      "sourceId": "expanded-v1-soundbee-a3-logistics",
+      "title": "SoundBee-A3 演示物流轨迹停滞处理",
+      "model": "SoundBee-A3",
+      "topic": "logistics",
+      "contentPath": "datasets/knowledge/expanded-v1/soundbee-a3-logistics.md",
+      "sha256": "ee2d31e29ec38339e0ca44eff8bd4c2c55baac2cadb4eeff40c21a0d5f0ce0ec"
+    },
+    {
+      "sourceId": "expanded-v1-soundbee-a3-invoice",
+      "title": "SoundBee-A3 演示电子发票申请",
+      "model": "SoundBee-A3",
+      "topic": "invoice",
+      "contentPath": "datasets/knowledge/expanded-v1/soundbee-a3-invoice.md",
+      "sha256": "34bbcd306ffcfe27cec422fe10f74a18b8b238d40dc5557bb0196feb4e6d8b17"
+    },
+    {
+      "sourceId": "expanded-v1-soundbee-a3-pro-return",
+      "title": "SoundBee-A3-Pro 演示无理由退货条件",
+      "model": "SoundBee-A3-Pro",
+      "topic": "return",
+      "contentPath": "datasets/knowledge/expanded-v1/soundbee-a3-pro-return.md",
+      "sha256": "7757ee693dda97022f23254631e11edde61e811ab6f608e64d666f02634db87d"
+    },
+    {
+      "sourceId": "expanded-v1-soundbee-a3-pro-quality",
+      "title": "SoundBee-A3-Pro 演示质量售后期限",
+      "model": "SoundBee-A3-Pro",
+      "topic": "quality",
+      "contentPath": "datasets/knowledge/expanded-v1/soundbee-a3-pro-quality.md",
+      "sha256": "151eecd5673f5150d106ca7c1aff3e638be9c455b5ca24a48fd044e4ffe178c2"
+    },
+    {
+      "sourceId": "expanded-v1-soundbee-a3-pro-pairing",
+      "title": "SoundBee-A3-Pro 演示蓝牙配对操作",
+      "model": "SoundBee-A3-Pro",
+      "topic": "pairing",
+      "contentPath": "datasets/knowledge/expanded-v1/soundbee-a3-pro-pairing.md",
+      "sha256": "3b2e69f6a90b34a3413220dab39c808634ecc0ad673c3a5aa3ad71e2f7896b56"
+    },
+    {
+      "sourceId": "expanded-v1-soundbee-a3-pro-charging",
+      "title": "SoundBee-A3-Pro 演示充电接口与指示灯",
+      "model": "SoundBee-A3-Pro",
+      "topic": "charging",
+      "contentPath": "datasets/knowledge/expanded-v1/soundbee-a3-pro-charging.md",
+      "sha256": "eb3a89e1527e87f7569f099637eb0fe40e79ebdfdc849df54154c97d1259d9ac"
+    },
+    {
+      "sourceId": "expanded-v1-soundbee-a3-pro-logistics",
+      "title": "SoundBee-A3-Pro 演示物流轨迹停滞处理",
+      "model": "SoundBee-A3-Pro",
+      "topic": "logistics",
+      "contentPath": "datasets/knowledge/expanded-v1/soundbee-a3-pro-logistics.md",
+      "sha256": "c88c6a5ebaa9be97d2f570a883e06900a7236cb584822c83e051ddd969e01dd5"
+    },
+    {
+      "sourceId": "expanded-v1-soundbee-a3-pro-invoice",
+      "title": "SoundBee-A3-Pro 演示电子发票申请",
+      "model": "SoundBee-A3-Pro",
+      "topic": "invoice",
+      "contentPath": "datasets/knowledge/expanded-v1/soundbee-a3-pro-invoice.md",
+      "sha256": "59aa1ddf9ea68a6ffcff547283a49823f81bf7ee5d0455d95e4ff5dfb96fac28"
+    },
+    {
+      "sourceId": "expanded-v1-soundbee-b1-return",
+      "title": "SoundBee-B1 演示无理由退货条件",
+      "model": "SoundBee-B1",
+      "topic": "return",
+      "contentPath": "datasets/knowledge/expanded-v1/soundbee-b1-return.md",
+      "sha256": "0309b33444fcafff7bf4d28775e58447314091d7ebee68cebfde397be100874b"
+    },
+    {
+      "sourceId": "expanded-v1-soundbee-b1-quality",
+      "title": "SoundBee-B1 演示质量售后期限",
+      "model": "SoundBee-B1",
+      "topic": "quality",
+      "contentPath": "datasets/knowledge/expanded-v1/soundbee-b1-quality.md",
+      "sha256": "33abbda9f3bbc3f3fdc0656a71360e832adf32d58f00d36ce5ef90972c19336a"
+    },
+    {
+      "sourceId": "expanded-v1-soundbee-b1-pairing",
+      "title": "SoundBee-B1 演示蓝牙配对操作",
+      "model": "SoundBee-B1",
+      "topic": "pairing",
+      "contentPath": "datasets/knowledge/expanded-v1/soundbee-b1-pairing.md",
+      "sha256": "ff4b5766f5acde99c2338b948398acaf5190a8cf06013ab98b39a02308457dfa"
+    },
+    {
+      "sourceId": "expanded-v1-soundbee-b1-charging",
+      "title": "SoundBee-B1 演示充电接口与指示灯",
+      "model": "SoundBee-B1",
+      "topic": "charging",
+      "contentPath": "datasets/knowledge/expanded-v1/soundbee-b1-charging.md",
+      "sha256": "0ef837c8305d24fbbc4ac58f6d11df471631d047bdf950a280fd64c298d30622"
+    },
+    {
+      "sourceId": "expanded-v1-soundbee-b1-logistics",
+      "title": "SoundBee-B1 演示物流轨迹停滞处理",
+      "model": "SoundBee-B1",
+      "topic": "logistics",
+      "contentPath": "datasets/knowledge/expanded-v1/soundbee-b1-logistics.md",
+      "sha256": "3c8ce71e5c603adb19af680a9a21b2b31c0c772523c7189458d60570f7c15327"
+    },
+    {
+      "sourceId": "expanded-v1-soundbee-b1-invoice",
+      "title": "SoundBee-B1 演示电子发票申请",
+      "model": "SoundBee-B1",
+      "topic": "invoice",
+      "contentPath": "datasets/knowledge/expanded-v1/soundbee-b1-invoice.md",
+      "sha256": "21380d2ab2ec7d19983cecbc439aef38a4388b10bc545a73c0a8d8f09d37a01c"
+    },
+    {
+      "sourceId": "expanded-v1-soundbee-b1-plus-return",
+      "title": "SoundBee-B1-Plus 演示无理由退货条件",
+      "model": "SoundBee-B1-Plus",
+      "topic": "return",
+      "contentPath": "datasets/knowledge/expanded-v1/soundbee-b1-plus-return.md",
+      "sha256": "ed24615346c720560eee0eb74e02aa7bb78f32e468771a1e59b44c1f1057d11d"
+    },
+    {
+      "sourceId": "expanded-v1-soundbee-b1-plus-quality",
+      "title": "SoundBee-B1-Plus 演示质量售后期限",
+      "model": "SoundBee-B1-Plus",
+      "topic": "quality",
+      "contentPath": "datasets/knowledge/expanded-v1/soundbee-b1-plus-quality.md",
+      "sha256": "457889a96003e54932e97bf6130d41213034fdadd4f237bfbdeb5bf86739a4ad"
+    },
+    {
+      "sourceId": "expanded-v1-soundbee-b1-plus-pairing",
+      "title": "SoundBee-B1-Plus 演示蓝牙配对操作",
+      "model": "SoundBee-B1-Plus",
+      "topic": "pairing",
+      "contentPath": "datasets/knowledge/expanded-v1/soundbee-b1-plus-pairing.md",
+      "sha256": "5369cd1ea2326ada9a79f0381e0239c64184c1ac1a4dab7cc45bae32d3e649a4"
+    },
+    {
+      "sourceId": "expanded-v1-soundbee-b1-plus-charging",
+      "title": "SoundBee-B1-Plus 演示充电接口与指示灯",
+      "model": "SoundBee-B1-Plus",
+      "topic": "charging",
+      "contentPath": "datasets/knowledge/expanded-v1/soundbee-b1-plus-charging.md",
+      "sha256": "a0cf5ad265a83f82c425516afc131af1d5ba0fa1577a3c6ed2d6d60dc0589293"
+    },
+    {
+      "sourceId": "expanded-v1-soundbee-b1-plus-logistics",
+      "title": "SoundBee-B1-Plus 演示物流轨迹停滞处理",
+      "model": "SoundBee-B1-Plus",
+      "topic": "logistics",
+      "contentPath": "datasets/knowledge/expanded-v1/soundbee-b1-plus-logistics.md",
+      "sha256": "30ff858ad5bd3c54f4e7af42235cf6d613f2be00749826dc106d053e2f8d6be1"
+    },
+    {
+      "sourceId": "expanded-v1-soundbee-b1-plus-invoice",
+      "title": "SoundBee-B1-Plus 演示电子发票申请",
+      "model": "SoundBee-B1-Plus",
+      "topic": "invoice",
+      "contentPath": "datasets/knowledge/expanded-v1/soundbee-b1-plus-invoice.md",
+      "sha256": "c77a61d1eaa7f16e99595374b8f38b2f99a67e1a2d1fa7cd8b304e0d68f584ed"
+    },
+    {
+      "sourceId": "expanded-v1-soundbee-b2-return",
+      "title": "SoundBee-B2 演示无理由退货条件",
+      "model": "SoundBee-B2",
+      "topic": "return",
+      "contentPath": "datasets/knowledge/expanded-v1/soundbee-b2-return.md",
+      "sha256": "03517343e69d9db2c804af853897d2acc911b534d9ab8b7f893f762f97fa6791"
+    },
+    {
+      "sourceId": "expanded-v1-soundbee-b2-quality",
+      "title": "SoundBee-B2 演示质量售后期限",
+      "model": "SoundBee-B2",
+      "topic": "quality",
+      "contentPath": "datasets/knowledge/expanded-v1/soundbee-b2-quality.md",
+      "sha256": "5f7bc3de85f48339ca93617bda662c444fedf7ffdcbdf1f9743d3158c52bbda6"
+    },
+    {
+      "sourceId": "expanded-v1-soundbee-b2-pairing",
+      "title": "SoundBee-B2 演示蓝牙配对操作",
+      "model": "SoundBee-B2",
+      "topic": "pairing",
+      "contentPath": "datasets/knowledge/expanded-v1/soundbee-b2-pairing.md",
+      "sha256": "9f71207378aa48f7fe0b0f998f224a01e12147367ffe189f2ba4783561d2568c"
+    },
+    {
+      "sourceId": "expanded-v1-soundbee-b2-charging",
+      "title": "SoundBee-B2 演示充电接口与指示灯",
+      "model": "SoundBee-B2",
+      "topic": "charging",
+      "contentPath": "datasets/knowledge/expanded-v1/soundbee-b2-charging.md",
+      "sha256": "21f30520d845675c0da3eb7576b97052ed55cef072fa70d589521ede33865c31"
+    },
+    {
+      "sourceId": "expanded-v1-soundbee-b2-logistics",
+      "title": "SoundBee-B2 演示物流轨迹停滞处理",
+      "model": "SoundBee-B2",
+      "topic": "logistics",
+      "contentPath": "datasets/knowledge/expanded-v1/soundbee-b2-logistics.md",
+      "sha256": "a75c7fcd9bd6ba2df843b117a8e3f393fe2b6b5490d383ad05629ed9a82ac2c1"
+    },
+    {
+      "sourceId": "expanded-v1-soundbee-b2-invoice",
+      "title": "SoundBee-B2 演示电子发票申请",
+      "model": "SoundBee-B2",
+      "topic": "invoice",
+      "contentPath": "datasets/knowledge/expanded-v1/soundbee-b2-invoice.md",
+      "sha256": "1e2873232521a32add453c1301262b156fd51000813859e095155eb001080942"
+    },
+    {
+      "sourceId": "expanded-v1-soundbee-b2-max-return",
+      "title": "SoundBee-B2-Max 演示无理由退货条件",
+      "model": "SoundBee-B2-Max",
+      "topic": "return",
+      "contentPath": "datasets/knowledge/expanded-v1/soundbee-b2-max-return.md",
+      "sha256": "9daa5611fcb23b33254cd6d8e00b81ecdf381f19899c0e68f1bfd648d727dfa8"
+    },
+    {
+      "sourceId": "expanded-v1-soundbee-b2-max-quality",
+      "title": "SoundBee-B2-Max 演示质量售后期限",
+      "model": "SoundBee-B2-Max",
+      "topic": "quality",
+      "contentPath": "datasets/knowledge/expanded-v1/soundbee-b2-max-quality.md",
+      "sha256": "1463af64f366723fee995cacaf1898de107a48e4688800d41b9b237af1a39b24"
+    },
+    {
+      "sourceId": "expanded-v1-soundbee-b2-max-pairing",
+      "title": "SoundBee-B2-Max 演示蓝牙配对操作",
+      "model": "SoundBee-B2-Max",
+      "topic": "pairing",
+      "contentPath": "datasets/knowledge/expanded-v1/soundbee-b2-max-pairing.md",
+      "sha256": "6d5c321b9f4f31943ce29fc5680f72a57f328eaa2a5644080d62f278ca7900ac"
+    },
+    {
+      "sourceId": "expanded-v1-soundbee-b2-max-charging",
+      "title": "SoundBee-B2-Max 演示充电接口与指示灯",
+      "model": "SoundBee-B2-Max",
+      "topic": "charging",
+      "contentPath": "datasets/knowledge/expanded-v1/soundbee-b2-max-charging.md",
+      "sha256": "bfc122274dfa1e369c9e5a8e84a3004f67be0329ce0052201a32e55d5d823a85"
+    },
+    {
+      "sourceId": "expanded-v1-soundbee-b2-max-logistics",
+      "title": "SoundBee-B2-Max 演示物流轨迹停滞处理",
+      "model": "SoundBee-B2-Max",
+      "topic": "logistics",
+      "contentPath": "datasets/knowledge/expanded-v1/soundbee-b2-max-logistics.md",
+      "sha256": "f9d73ba89c4f0642558a04bdd82b3deab688ed42acb689262c748c0a9e803b18"
+    },
+    {
+      "sourceId": "expanded-v1-soundbee-b2-max-invoice",
+      "title": "SoundBee-B2-Max 演示电子发票申请",
+      "model": "SoundBee-B2-Max",
+      "topic": "invoice",
+      "contentPath": "datasets/knowledge/expanded-v1/soundbee-b2-max-invoice.md",
+      "sha256": "a83922ef34db30b2eb777c5adf7c96db9da794ba9c95a461bac5d6eb12d242cf"
+    },
+    {
+      "sourceId": "expanded-v1-soundbee-c1-return",
+      "title": "SoundBee-C1 演示无理由退货条件",
+      "model": "SoundBee-C1",
+      "topic": "return",
+      "contentPath": "datasets/knowledge/expanded-v1/soundbee-c1-return.md",
+      "sha256": "106b59fa17b01db6f00bbca9dbc4fd834c93e555cdd7b6a3b005525a1759e6c8"
+    },
+    {
+      "sourceId": "expanded-v1-soundbee-c1-quality",
+      "title": "SoundBee-C1 演示质量售后期限",
+      "model": "SoundBee-C1",
+      "topic": "quality",
+      "contentPath": "datasets/knowledge/expanded-v1/soundbee-c1-quality.md",
+      "sha256": "eae3082531a8020b705b8836c8d48acc6cc6bd8e29cd56dd6c5cf95d5630f381"
+    },
+    {
+      "sourceId": "expanded-v1-soundbee-c1-pairing",
+      "title": "SoundBee-C1 演示蓝牙配对操作",
+      "model": "SoundBee-C1",
+      "topic": "pairing",
+      "contentPath": "datasets/knowledge/expanded-v1/soundbee-c1-pairing.md",
+      "sha256": "111f2ba80f995519e144ad1e53f44a04176f7de1db90189751b0d448b7ddc39f"
+    },
+    {
+      "sourceId": "expanded-v1-soundbee-c1-charging",
+      "title": "SoundBee-C1 演示充电接口与指示灯",
+      "model": "SoundBee-C1",
+      "topic": "charging",
+      "contentPath": "datasets/knowledge/expanded-v1/soundbee-c1-charging.md",
+      "sha256": "12e5d8260e13338ffc9c19da8f7b9f5c81b58a937f32c9768d1e39e1a7444a87"
+    },
+    {
+      "sourceId": "expanded-v1-soundbee-c1-logistics",
+      "title": "SoundBee-C1 演示物流轨迹停滞处理",
+      "model": "SoundBee-C1",
+      "topic": "logistics",
+      "contentPath": "datasets/knowledge/expanded-v1/soundbee-c1-logistics.md",
+      "sha256": "d2b601bd611923474422166fb8ff1fb9aef98f0482be58ea2bd9154341983a92"
+    },
+    {
+      "sourceId": "expanded-v1-soundbee-c1-invoice",
+      "title": "SoundBee-C1 演示电子发票申请",
+      "model": "SoundBee-C1",
+      "topic": "invoice",
+      "contentPath": "datasets/knowledge/expanded-v1/soundbee-c1-invoice.md",
+      "sha256": "92f4872e0f2226c0edd2e4bb58d2f8f7fbe2a79f96b134ae5a13f19ae46fb802"
+    },
+    {
+      "sourceId": "expanded-v1-soundbee-c1-pro-return",
+      "title": "SoundBee-C1-Pro 演示无理由退货条件",
+      "model": "SoundBee-C1-Pro",
+      "topic": "return",
+      "contentPath": "datasets/knowledge/expanded-v1/soundbee-c1-pro-return.md",
+      "sha256": "fc3d78b5eb050dc7ca5884bbe5fad0d9e1e3b01f85ffcf7ea419c870fc48f0ed"
+    },
+    {
+      "sourceId": "expanded-v1-soundbee-c1-pro-quality",
+      "title": "SoundBee-C1-Pro 演示质量售后期限",
+      "model": "SoundBee-C1-Pro",
+      "topic": "quality",
+      "contentPath": "datasets/knowledge/expanded-v1/soundbee-c1-pro-quality.md",
+      "sha256": "d22492d0ce821b1ebc5360ebdb1b8ebb5621f7b248fe946b4bbdde92e85b6abc"
+    },
+    {
+      "sourceId": "expanded-v1-soundbee-c1-pro-pairing",
+      "title": "SoundBee-C1-Pro 演示蓝牙配对操作",
+      "model": "SoundBee-C1-Pro",
+      "topic": "pairing",
+      "contentPath": "datasets/knowledge/expanded-v1/soundbee-c1-pro-pairing.md",
+      "sha256": "b9241d59b4bd782cc9ad24b99025ef80b9548f6632282669d27e771a3d3cd48a"
+    },
+    {
+      "sourceId": "expanded-v1-soundbee-c1-pro-charging",
+      "title": "SoundBee-C1-Pro 演示充电接口与指示灯",
+      "model": "SoundBee-C1-Pro",
+      "topic": "charging",
+      "contentPath": "datasets/knowledge/expanded-v1/soundbee-c1-pro-charging.md",
+      "sha256": "276cd2dffed33bbf0f72f27260a2fb144cb394455fabdceb2c10467ef56b3e95"
+    },
+    {
+      "sourceId": "expanded-v1-soundbee-c1-pro-logistics",
+      "title": "SoundBee-C1-Pro 演示物流轨迹停滞处理",
+      "model": "SoundBee-C1-Pro",
+      "topic": "logistics",
+      "contentPath": "datasets/knowledge/expanded-v1/soundbee-c1-pro-logistics.md",
+      "sha256": "c4ba1225fdf349b525034dd3e26c0491316292c52ff1de929d36f8847e222825"
+    },
+    {
+      "sourceId": "expanded-v1-soundbee-c1-pro-invoice",
+      "title": "SoundBee-C1-Pro 演示电子发票申请",
+      "model": "SoundBee-C1-Pro",
+      "topic": "invoice",
+      "contentPath": "datasets/knowledge/expanded-v1/soundbee-c1-pro-invoice.md",
+      "sha256": "44ae1da7054a4535442ead098225cf27fbbc6d038372e8f19e43dd1677e36a09"
+    }
+  ]
+}
