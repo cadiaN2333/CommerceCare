@@ -1,6 +1,9 @@
 package com.lzq.commercecare.assistant.dto;
 
 import java.util.List;
+import java.util.Map;
+import java.util.LinkedHashMap;
+import java.util.Collections;
 import com.lzq.commercecare.routing.dto.ModelRecognitionResponse;
 
 /**
@@ -12,10 +15,14 @@ public record RoutedChatResponse(
         Strategy strategy,
         String answer,
         ModelRecognitionResponse modelRecognition,
-        List<ChatResponse.Source> sources
+        List<ChatResponse.Source> sources,
+        Map<String, List<ChatResponse.Source>> sourceGroups
 ) {
     public RoutedChatResponse {
         sources = List.copyOf(sources);
+        Map<String, List<ChatResponse.Source>> copy = new LinkedHashMap<>();
+        sourceGroups.forEach((model, values) -> copy.put(model, List.copyOf(values)));
+        sourceGroups = Collections.unmodifiableMap(copy);
     }
 
     public enum Status {
@@ -23,6 +30,6 @@ public record RoutedChatResponse(
     }
 
     public enum Strategy {
-        MODEL_FILTERED_VECTOR, CLARIFY_MODEL
+        MODEL_FILTERED_VECTOR, MODEL_COMPARISON, CLARIFY_MODEL
     }
 }

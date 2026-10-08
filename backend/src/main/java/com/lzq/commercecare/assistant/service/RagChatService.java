@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.Map;
+import java.util.LinkedHashMap;
+import java.util.Collections;
 
 import com.lzq.commercecare.assistant.dto.ChatResponse;
 import com.lzq.commercecare.knowledge.service.KnowledgeSearchService;
@@ -60,6 +63,11 @@ public class RagChatService {
      * productModel为null时保持原基线；新路由只允许明确的规范型号。
      */
     public ChatResponse chat(String question, int topK, String productModel) {
+        return chatWithEvidence(question, topK, productModel).response();
+    }
+
+    /** 返回实际引用的型号分组；原chat对外仍只投影ChatResponse。 */
+    public EvidenceAnswer chatWithEvidence(String question, int topK, String productModel) {
         if (productModel != null && productModel.isBlank()) {
             throw new IllegalArgumentException("型号不能是空字符串。");
         }
@@ -78,6 +86,25 @@ public class RagChatService {
             }
         }
 
+        return answerFromDocuments(question, documents);
+    }
+
+    /** 调用方先核验候选适用范围；此方法只复用生成与来源校验。 */
+    EvidenceAnswer answerFromDocuments(String question, List<Document> documents) {
+        documents = List.copyOf(documents);
+        ChatResponse response = generateAnswer(question, documents);
+        Map<String, List<ChatResponse.Source>> groups = new LinkedHashMap<>();
+        for (ChatResponse.Source source : response.sources()) {
+            Document document = documents.get(source.referenceNumber() - 1);
+            Object model = document.getMetadata().get("productModel");
+            if (model instanceof String name && !name.isBlank()) {
+                groups.computeIfAbsent(name, key -> new ArrayList<>()).add(source);
+            }
+        }
+        return new EvidenceAnswer(response, groups);
+    }
+
+    private ChatResponse generateAnswer(String question, List<Document> documents) {
         if (documents.isEmpty()) {
             return insufficientEvidence();
         }
@@ -216,5 +243,14 @@ public class RagChatService {
             String answer,
             List<Integer> sourceNumbers
     ) {
+    }
+
+    public record EvidenceAnswer(ChatResponse response,
+            Map<String, List<ChatResponse.Source>> sourceGroups) {
+        public EvidenceAnswer {
+            Map<String, List<ChatResponse.Source>> copy = new LinkedHashMap<>();
+            sourceGroups.forEach((model, values) -> copy.put(model, List.copyOf(values)));
+            sourceGroups = Collections.unmodifiableMap(copy);
+        }
     }
 }

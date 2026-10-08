@@ -141,6 +141,25 @@ class RagChatServiceFilterTest {
                 List.of(new Generation(new AssistantMessage(json))));
     }
 
+    @Test
+    void groupingUsesDocumentMetadataAndReferenceNumbers() {
+        var search = mock(KnowledgeSearchService.class);
+        var model = mock(ChatModel.class);
+        when(model.getDefaultOptions()).thenReturn(ChatOptions.builder().build());
+        when(model.call(any(Prompt.class))).thenReturn(modelResponse(
+                "{\"answerable\":true,\"answer\":\"演示对比\",\"sourceNumbers\":[2,1]}"));
+        var service = new RagChatService(ChatClient.builder(model), search);
+        var evidence = service.answerFromDocuments("比较两款", List.of(
+                new Document("a", "左侧资料", Map.of("productModel", "SoundBee-A2", "sourceId", "a")),
+                new Document("b", "右侧资料", Map.of("productModel", "SoundBee-A2-Plus", "sourceId", "b"))));
+        assertEquals("a", evidence.sourceGroups().get("SoundBee-A2").getFirst().sourceId());
+        assertEquals(1, evidence.sourceGroups().get("SoundBee-A2").getFirst().referenceNumber());
+        assertEquals("b", evidence.sourceGroups().get("SoundBee-A2-Plus").getFirst().sourceId());
+        assertEquals(2, evidence.sourceGroups().get("SoundBee-A2-Plus").getFirst().referenceNumber());
+        assertThrows(UnsupportedOperationException.class,
+                () -> evidence.sourceGroups().put("其他型号", List.of()));
+    }
+
     private Document document(String id, String model) {
         return new Document(id, "演示资料", Map.of("productModel", model));
     }

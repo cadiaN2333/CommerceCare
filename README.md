@@ -8,7 +8,7 @@ CommerceCare 是一个从零搭建的 Java 电商客服学习项目。目标是�
 
 型号识别一键入口：执行 `.\scripts\evaluate-model-recognition.ps1`，测试独立预览接口的43条回归用例和5条参数校验。范围与实测见[型号识别验证报告](datasets/evaluation/model-recognition-v1/验证报告.md)。代码更新后先重启后端，默认端口8081。
 
-型号专属聊天入口：`POST /api/v1/chat/routed`。执行 `.\scripts\evaluate-routed-chat.ps1` 对照新入口与原chat。新入口在缺失/未知/多型号时澄清；通用意图与比较能力尚未接入，不适合替代全部客服请求。构建范围与实测见[聊天路由验证报告](datasets/evaluation/routed-chat-v1/验证报告.md)。
+型号咨询入口：`POST /api/v1/chat/routed`。单型号过滤检索、明确两型号政策比较与澄清分流。执行 `.\scripts\evaluate-routed-chat.ps1` 默认使用v2，对照原chat；`-DatasetVersion v1`保留历史标签。通用意图与更多型号仍未支持，构建范围与生成波动见[比较验证报告](datasets/evaluation/routed-chat-v2/验证报告.md)。
 
 ## 技术栈
 
@@ -97,6 +97,6 @@ Invoke-RestMethod "http://localhost:8081/api/v1/system/info" | ConvertTo-Json
 
 ## 验证记录
 
-2026-10-04验证初始后端、数据库与迁移。2026-10-08已验证型号过滤的三路开发集对照；新增独立型号识别预览接口后，`mvn -f backend/pom.xml verify`通过26项单元测试，43条识别HTTP回归与5项参数校验通过。型号识别尚未接入聊天，不宣称已完成Adaptive-RAG或多Agent系统。
+2026-10-04验证初始后端。2026-10-08型号识别已接入聊天并增加有界两型号比较，隔离副本66项项目测试通过；27题首次字段匹配27/27、最终复测26/27，生成波动如实保留。未跟踪习题文件可能阻碍本机全量构建，见报告。尚未完成复杂度Adaptive-RAG或多Agent系统。
 
 根目录 `.gitignore` 忽略 IDEA 配置、Maven 构建产物、日志、本地环境配置、证书私钥、运行时数据和本地模型权重。

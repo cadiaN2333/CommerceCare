@@ -1,12 +1,14 @@
 ﻿param(
     [string]$BaseUrl = "http://localhost:8081",
+    [ValidateSet("v1", "v2")]
+    [string]$DatasetVersion = "v2",
     [switch]$SkipBaseline,
     [switch]$ValidateOnly
 )
 
 $ErrorActionPreference = "Stop"
 $taskRoot = Split-Path -Parent $PSScriptRoot
-$taskCasesPath = Join-Path $taskRoot "datasets\evaluation\routed-chat-v1\cases.json"
+$taskCasesPath = Join-Path $taskRoot ("datasets\evaluation\routed-chat-" + $DatasetVersion + "\cases.json")
 $taskManifestPath = Join-Path $taskRoot "datasets\evaluation\expanded-v1\corpus-manifest.json"
 $taskDataset = Get-Content -LiteralPath $taskCasesPath -Raw -Encoding UTF8 | ConvertFrom-Json
 $taskManifest = Get-Content -LiteralPath $taskManifestPath -Raw -Encoding UTF8 | ConvertFrom-Json
@@ -35,15 +37,17 @@ foreach ($taskCase in $taskDataset.cases) {
             throw "澄清标签矛盾。"
         }
     } else {
-        if ($taskCase.expectedStrategy -ne "MODEL_FILTERED_VECTOR" -or
-            $taskCase.expectedRecognitionStatus -ne "RESOLVED" -or
-            [string]::IsNullOrWhiteSpace($taskCase.expectedProductModel)) {
+        if ($taskCase.expectedStrategy -notin @("MODEL_FILTERED_VECTOR", "MODEL_COMPARISON") -or
+            ($taskCase.expectedStrategy -eq "MODEL_FILTERED_VECTOR" -and
+             ($taskCase.expectedRecognitionStatus -ne "RESOLVED" -or [string]::IsNullOrWhiteSpace($taskCase.expectedProductModel))) -or
+            ($taskCase.expectedStrategy -eq "MODEL_COMPARISON" -and
+             ($taskCase.expectedRecognitionStatus -ne "MULTIPLE" -or @($taskCase.expectedDetectedModels).Count -ne 2))) {
             throw "检索标签矛盾。"
         }
     }
     foreach ($taskId in $taskCase.expectedSourceIds) {
         if (-not $taskSourceModels.ContainsKey($taskId) -or
-            $taskSourceModels[$taskId] -cne $taskCase.expectedProductModel) {
+            $taskSourceModels[$taskId] -cnotin @($taskCase.expectedDetectedModels)) {
             throw "预期来源与型号不一致。"
         }
     }
@@ -86,6 +90,7 @@ foreach ($taskCase in $taskDataset.cases) {
         $taskStatusMatch=$null; $taskEvidenceMatch=$null
         $taskApplicable=$taskEndpoint.name -eq "routed" -or $taskCase.expectedStatus -ne "NEEDS_CLARIFICATION"
         $taskInvariantMatch=$false; $taskSourceScopeMatch=$null
+        $taskGroupsMatch=$null
         $taskTimer=[System.Diagnostics.Stopwatch]::StartNew()
         try {
             $taskReply=Invoke-TaskJson -Path $taskEndpoint.path -Method "POST" -Body @{ question=$taskCase.question; topK=$taskCase.topK }
@@ -109,7 +114,7 @@ foreach ($taskCase in $taskDataset.cases) {
                 } else { $taskSources.Count -eq 0 }
                 $taskSourceScopeMatch=@($taskSources | Where-Object {
                     -not $taskSourceModels.ContainsKey($_.sourceId) -or
-                    $taskSourceModels[$_.sourceId] -cne $taskCase.expectedProductModel
+                    $taskSourceModels[$_.sourceId] -cnotin @($taskCase.expectedDetectedModels)
                 }).Count -eq 0
             }
             if ($taskEndpoint.name -eq "routed") {
@@ -119,11 +124,35 @@ foreach ($taskCase in $taskDataset.cases) {
                     $taskReply.modelRecognition.productModel -ceq $taskCase.expectedProductModel -and
                     (Test-TaskSequence -Actual @($taskReply.modelRecognition.detectedModels) -Expected @($taskCase.expectedDetectedModels)) -and
                     (Test-TaskSequence -Actual @($taskReply.modelRecognition.unknownMentions) -Expected @($taskCase.expectedUnknownMentions))
+                # 新版回答要求分组与扁平引用一致，不能只复制请求型号做展示。
+                $taskGroupsMatch = $null -ne $taskReply.sourceGroups
+                if ($taskGroupsMatch) {
+                    $taskProperties=@($taskReply.sourceGroups.PSObject.Properties)
+                    if ($taskReply.status -ne "ANSWERED") {
+                        $taskGroupsMatch=$taskProperties.Count -eq 0
+                    } else {
+                        $taskGroupKeys=@($taskProperties.Name | Sort-Object)
+                        $taskExpectedKeys=@($taskCase.expectedDetectedModels | Sort-Object)
+                        $taskGroupsMatch=Test-TaskSequence -Actual $taskGroupKeys -Expected $taskExpectedKeys
+                        $taskGroupedSignatures=@()
+                        foreach ($taskProperty in $taskProperties) {
+                            $taskValues=@($taskProperty.Value)
+                            if ($taskValues.Count -eq 0) {$taskGroupsMatch=$false}
+                            foreach ($taskSource in $taskValues) {
+                                if (-not $taskSourceModels.ContainsKey($taskSource.sourceId) -or
+                                    $taskSourceModels[$taskSource.sourceId] -cne $taskProperty.Name) {$taskGroupsMatch=$false}
+                                $taskGroupedSignatures += "$($taskSource.referenceNumber):$($taskSource.sourceId)"
+                            }
+                        }
+                        $taskFlatSignatures=@($taskSources | ForEach-Object { "$($_.referenceNumber):$($_.sourceId)" } | Sort-Object)
+                        $taskGroupsMatch=$taskGroupsMatch -and (Test-TaskSequence -Actual @($taskGroupedSignatures | Sort-Object) -Expected $taskFlatSignatures)
+                    }
+                }
             }
         } catch { $taskError=$_.Exception.Message } finally { $taskTimer.Stop() }
         $taskAutoMatched = if ($taskApplicable) {
             $taskError -eq "" -and $taskStatusMatch -and $taskEvidenceMatch -and $taskSourceScopeMatch -and
-                $taskInvariantMatch -and ($taskEndpoint.name -ne "routed" -or ($taskModelMatch -and $taskStrategyMatch))
+                $taskInvariantMatch -and ($taskEndpoint.name -ne "routed" -or ($taskModelMatch -and $taskStrategyMatch -and $taskGroupsMatch))
         } else { $null }
         $taskRows.Add([PSCustomObject]@{
             caseId=$taskCase.caseId; endpoint=$taskEndpoint.name; question=$taskCase.question
@@ -132,6 +161,7 @@ foreach ($taskCase in $taskDataset.cases) {
             strategyMatch=$taskStrategyMatch; modelMatch=$taskModelMatch
             evidenceMatch=$taskEvidenceMatch; sourceScopeMatch=$taskSourceScopeMatch
             invariantMatch=$taskInvariantMatch; autoMatched=$taskAutoMatched
+            groupsMatch=$taskGroupsMatch
             answer=$taskReply.answer; actualSourceIds=@($taskReply.sources | ForEach-Object sourceId) -join "|"
             expectedAnswerPoints=$taskCase.expectedAnswerPoints
             manualCorrect=""; reviewNotes=""; elapsedMs=$taskTimer.ElapsedMilliseconds; error=$taskError
@@ -168,12 +198,13 @@ $taskHashes=@{}
 foreach ($taskRelative in @(
     "assistant/dto/RoutedChatResponse.java", "assistant/service/RoutedChatService.java",
     "assistant/service/RagChatService.java", "assistant/controller/RoutedChatController.java",
-    "routing/service/ModelRecognitionService.java", "knowledge/service/KnowledgeSearchService.java"
+    "routing/service/ModelRecognitionService.java", "knowledge/service/KnowledgeSearchService.java",
+    "assistant/service/ComparisonTaskService.java", "assistant/service/ModelComparisonService.java"
 )) {
     $taskHashes[$taskRelative]=(Get-FileHash -LiteralPath (Join-Path $taskRoot ("backend/src/main/java/com/lzq/commercecare/"+$taskRelative)) -Algorithm SHA256).Hash
 }
 [System.IO.File]::WriteAllText((Join-Path $taskRunDirectory "metadata.json"),(@{
-    runAt=(Get-Date -Format o);baseUrl=$taskBaseUrl;skipBaseline=[bool]$SkipBaseline
+    runAt=(Get-Date -Format o);baseUrl=$taskBaseUrl;skipBaseline=[bool]$SkipBaseline;datasetVersion=$taskDataset.datasetVersion
     datasetSha256=(Get-FileHash -LiteralPath $taskCasesPath -Algorithm SHA256).Hash
     manifestSha256=(Get-FileHash -LiteralPath $taskManifestPath -Algorithm SHA256).Hash
     scriptSha256=(Get-FileHash -LiteralPath $PSCommandPath -Algorithm SHA256).Hash
